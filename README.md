@@ -39,97 +39,97 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 
 ## Classes
 ### 1: Introduction & Data Visualisation
-Chapters covered:
-1-2 Introduction 
-3 Data Visualisation
+*Chapters covered:*
+- 1-2 Introduction 
+- 3 Data Visualisation
 
 ### 2: R Workflows & R Markdown Intro
-Chapters covered:
-4 Workflow Basics
-6 Workflow Scripts
-8 Workflow Projects
-(not in book) Record Keeping with Notebooks and Markdown
+*Chapters covered:*
+- 4 Workflow Basics
+- 6 Workflow Scripts
+- 8 Workflow Projects
+- (not in book) Record Keeping with Notebooks and Markdown
 
 ### 3: Data Transformation
-Chapters covered:
-5 Data Transformation
+*Chapters covered:*
+- 5 Data Transformation
 
 ### Assesment 1: Visualisation
 
 ### 4: Exploratory Data Analysis
-Chapters covered:
-7 Exploratory Data Analysis
+*Chapters covered:*
+- 7 Exploratory Data Analysis
 
 ### 5: Data Structure and Import Data
-Chapters covered:
-11 Data import
-20 Vectors
-10 Tibbles
+*Chapters covered:*
+- 11 Data import
+- 20 Vectors
+- 10 Tibbles
 
 ### 6: Tidy Data  / Relational Data
-Chapters covered:
-12 Tidy data
-13 Relational data
+*Chapters covered:*
+- 12 Tidy data
+- 13 Relational data
 
 ### 7: Data Types Focus: Strings, Factors, Dates
-Chapters covered:
-14 Strings
-15 Factors
-16 Dates and times
+*Chapters covered:*
+- 14 Strings
+- 15 Factors
+- 16 Dates and times
 
 ### 8: Programming Style & Principles
-Chapters covered:
-(not in book) Intro Programming 
-18 Pipes
-19 Functions
+*Chapters covered:*
+- (not in book) Intro Programming 
+- 18 Pipes
+- 19 Functions
 
 ### 9: Iteration
-Chapers covered:
-21 Iteration
+*Chapters covered:*
+- 21 Iteration
 
 ### Assesment 2: Basic Analysis
 
 ### 10: Introduction to Modelling 
-Chapters covered:
-22 Introduction
-23 Model basics
+*Chapters covered:*
+- 22 Introduction
+- 23 Model basics
 
 ### 11: Model Building
-Chapters covered:
-24 Model building
+*Chapters covered:*
+- 24 Model building
 
 ### 12: Using Many Models
-Chapters covered:
-25 Many models
+*Chapters covered:*
+- 25 Many models
 
 ### 13: Using tidymodels
-(not in book) tidymodels
+- (not in book) tidymodels
 
 ### 14: RMarkdown 
-Chapters covered:
-27 R Markdown
+*Chapters covered:*
+- 27 R Markdown
 
 ### 15: Graphics for Communication
-Chapters covered:
-28 Graphics for communication
-(not in book) patchwork
+*Chapters covered:*
+- 28 Graphics for communication
+- (not in book) patchwork
 
 ### 16: RMarkdown extended
-Chapters covered:
-29 R Markdown formats
-(not in book) further presentation formats
-30 R Markdown workflow
+*Chapters covered:*
+- 29 R Markdown formats
+- (not in book) further presentation formats
+- 30 R Markdown workflow
 
 ### 17: Version Management with git
-(not in book) Working with github to find, re-use, version control, collaborate on and store code
+- (not in book) Working with github to find, re-use, version control, collaborate on and store code
 
 ### 18: Working with databases in R
-(not in book) Finding data in our data warehouse (Snowflake), getting it out to use, and putting it in if required.
+- (not in book) Finding data in our data warehouse (Snowflake), getting it out to use, and putting it in if required.
 
 ### Assesment 3: Data Retrieval & Modelling
 
 ### 19: Building Dashboards for Colleagues and Collaborators
-(not in book) Building Dash Boards with RShiny
+- (not in book) Building Dash Boards with RShiny
 
 ### 20: Geospatial Visualisations
-(not in book) Brief introduction to geospatial visualisation and analysis
+- (not in book) Brief introduction to geospatial visualisation and analysis
