@@ -56,7 +56,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 5 Data Transformation
 
-**Assesment task 1 "Visualisation" will be handed out **
+**Assesment task 1 "Visualisation" will be handed out**
 
 ### Class 4: Exploratory Data Analysis | 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -72,6 +72,8 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 12 Tidy data
 - 13 Relational data
+
+**Assesment 1 due**
 
 ### Class 7: Data Types Focus: Strings, Factors, Dates | 08/04/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -89,7 +91,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 21 Iteration
 
-**Assesment task 2 "Basic Analysis" will be handed out **
+**Assesment task 2 "Basic Analysis" will be handed out**
 
 ### Class 10: Introduction to Modelling | 29/04/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -103,6 +105,8 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 ### Class 12: Using Many Models | 11/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 25 Many models
+
+**Assesment 2 due**
 
 ### Class 13: Using tidymodels | 13/05/22, 09:00am - 12:00pm
 - (not in book) tidymodels
@@ -128,10 +132,12 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 ### Class 18: Working with databases in R | 08/06/22, 09:00am - 12:00pm
 - (not in book) Finding data in our data warehouse (Snowflake), getting it out to use, and putting it in if required.
 
-**Assesment task 3 "Data Retrieval & Modelling" will be handed out **
+**Assesment task 3 "Data Retrieval & Modelling" will be handed out**
 
 ### Class 19: Building Dashboards for Colleagues and Collaborators | 10/06/22, 09:00am - 12:00pm
 - (not in book) Building Dash Boards with RShiny
 
 ### Class 20: Geospatial Visualisations | 17/06/22, 09:00am - 12:00pm
 - (not in book) Brief introduction to geospatial visualisation and analysis
+
+**Final Assesment 3 due by 22/06/22 NZT**
