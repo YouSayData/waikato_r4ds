@@ -2,9 +2,9 @@
 
 ## Description
 
-In this course participants will learn to use the R programming language, with a particular focus on using R for handling, visualising, analysing research data, and communicate research outputs. This course will highlight strategies for developing an efficient workflow centred around R and RStudio. After learning the basics, we will focus on using R for exploratory data analysis, the production of more complex research visualisations, statistical modelling, and employing R for research communication. Additionally, we will look into the basics of working with databases in R and managing our research data and output with git.
+In this course participants will learn to use the R programming language, with a particular focus on using R for handling, visualising, analysing research data, and communicate research outputs. These are important skills for today's scientists (including agriscience), economists (including agricultural economics) and business professionals (including agribusiness). This course will highlight strategies for developing an efficient workflow centred around R and RStudio. After learning the basics, we will focus on using R for exploratory data analysis, the production of more complex research visualisations, statistical modelling, and employing R for research communication. Additionally, we will look into the basics of working with databases in R and managing our research data and output with git.
 
-Already early in the course, each participant should be able to import data with R, navigate and manipulate data tables and represent data graphically. 
+With a hands-on approach, each participant will be able to import data with R, navigate and manipulate data tables and represent data graphically from very early in the course. 
 
 ## Outcome 
 At the end of the course, participants will have reached an advanced knowledge of R and should be equipped to deal with almost all aspects of using R to analyse their research data.
@@ -38,13 +38,13 @@ At the end of the course, participants will have reached an advanced knowledge o
 Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and the founder of You Say Data, a New Zealand-based digital upskilling and data analysis company. He has lectured in Computer Science, Digital Humanities, and Data Science at the University of Leipzig and currently holds an honorary position as Fellow for Historical Language Processing and Data Analysis at Harvard University’s Center for Hellenic Studies. Dr Koentges is also a certified [RStudio Education partner](https://education.rstudio.com/trainers/people/kontges+thomas/).
 
 ## Classes
-### Class 1: Introduction & Data Visualisation | 11/03/22, 09:00am - 12:00pm
+### Class 1: Introduction & Data Visualisation | Friday 11/03/22, 09:00am - 12:00pm
 
 *Chapters covered:*
 - 1-2 Introduction 
 - 3 Data Visualisation
 
-### Class 2: R Workflows & R Markdown Intro | 16/03/22, 09:00am - 12:00pm
+### Class 2: R Workflows & R Markdown Intro | Wednesday 16/03/22, 09:00am - 12:00pm
 
 *Chapters covered:*
 - 4 Workflow Basics
@@ -52,86 +52,88 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 - 8 Workflow Projects
 - (not in book) Record Keeping with Notebooks and Markdown
 
-### Class 3: Data Transformation | 18/03/22, 09:00am - 12:00pm
+### Class 3: Data Transformation | Friday 18/03/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 5 Data Transformation
 
 **Assesment task 1 "Visualisation" will be handed out **
 
-### Class 4: Exploratory Data Analysis | 25/03/22, 09:00am - 12:00pm
+### Class 4: Exploratory Data Analysis | Friday 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 7 Exploratory Data Analysis
 
-### Class 5: Data Structure and Import Data | 30/03/22, 09:00am - 12:00pm
+### Class 5: Data Structure and Import Data | Wednesday 30/03/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 11 Data import
 - 20 Vectors
 - 10 Tibbles
 
-### Class 6: Tidy Data  / Relational Data | 01/04/22, 09:00am - 12:00pm
+### Class 6: Tidy Data  / Relational Data | Friday 01/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 12 Tidy data
 - 13 Relational data
 
-### Class 7: Data Types Focus: Strings, Factors, Dates | 08/04/22, 09:00am - 12:00pm
+### Class 7: Data Types Focus: Strings, Factors, Dates | Friday 08/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 14 Strings
 - 15 Factors
 - 16 Dates and times
 
-### Class 8: Programming Style & Principles | 13/04/22, 09:00am - 12:00pm
+### Class 8: Programming Style & Principles | Wednesday 13/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 - (not in book) Intro Programming 
 - 18 Pipes
 - 19 Functions
 
-### Class 9: Iteration | 27/04/22, 09:00am - 12:00pm
+### Break - No classes Friday 15/04/22 (Good Friday) or Friday 22/04/22
+
+### Class 9: Iteration | 27/04/22, Wednesday 09:00am - 12:00pm
 *Chapters covered:*
 - 21 Iteration
 
 **Assesment task 2 "Basic Analysis" will be handed out **
 
-### Class 10: Introduction to Modelling | 29/04/22, 09:00am - 12:00pm
+### Class 10: Introduction to Modelling | Friday 29/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 22 Introduction
 - 23 Model basics
 
-### Class 11: Model Building | 06/05/22, 09:00am - 12:00pm
+### Class 11: Model Building | Friday 06/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 24 Model building
 
-### Class 12: Using Many Models | 11/05/22, 09:00am - 12:00pm
+### Class 12: Using Many Models | Wednesday 11/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 25 Many models
 
-### Class 13: Using tidymodels | 13/05/22, 09:00am - 12:00pm
+### Class 13: Using tidymodels | Friday 13/05/22, 09:00am - 12:00pm
 - (not in book) tidymodels
 
-### Class 14: RMarkdown | 20/05/22, 09:00am - 12:00pm
+### Class 14: RMarkdown | Friday 20/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 27 R Markdown
 
-### Class 15: Graphics for Communication | 25/05/22, 09:00am - 12:00pm
+### Class 15: Graphics for Communication | Wednesday 25/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 28 Graphics for communication
 - (not in book) patchwork
 
-### Class 16: RMarkdown extended | 27/05/22, 09:00am - 12:00pm
+### Class 16: RMarkdown extended | Friday 27/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 29 R Markdown formats
 - (not in book) further presentation formats
 - 30 R Markdown workflow
 
-### Class 17: Version Management with git | 03/06/22, 09:00am - 12:00pm
-- (not in book) Working with github to find, re-use, version control, collaborate on and store code
+### Class 17: Version Management with git | Friday 03/06/22, 09:00am - 12:00pm
+- (not in book) Working with git (and GitHub) to find, re-use, version control, collaborate on and store code
 
-### Class 18: Working with databases in R | 08/06/22, 09:00am - 12:00pm
-- (not in book) Finding data in our data warehouse (Snowflake), getting it out to use, and putting it in if required.
+### Class 18: Working with databases in R | Wednesday 08/06/22, 09:00am - 12:00pm
+- (not in book) Finding data in a data warehouse (e.g. Snowflake), getting it out for analysis, and putting it in if required.
 
 **Assesment task 3 "Data Retrieval & Modelling" will be handed out **
 
-### Class 19: Building Dashboards for Colleagues and Collaborators | 10/06/22, 09:00am - 12:00pm
-- (not in book) Building Dash Boards with RShiny
+### Class 19: Building Dashboards for Colleagues and Collaborators | Friday 10/06/22, 09:00am - 12:00pm
+- (not in book) Building Dashboards with RShiny
 
-### Class 20: Geospatial Visualisations | 17/06/22, 09:00am - 12:00pm
-- (not in book) Brief introduction to geospatial visualisation and analysis
+### Class 20: Geospatial Visualisations | Friday 17/06/22, 09:00am - 12:00pm
+- (not in book) Brief introduction to geospatial visualisation (maps) and analysis
