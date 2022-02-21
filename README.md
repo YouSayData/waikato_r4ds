@@ -29,10 +29,10 @@ At the end of the course, participants will have reached an advanced knowledge o
 - R Shiny: [Mastering Shiny](https://mastering-shiny.org)
 - General: [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
-## Assesment
-1. Visualisations (33%), due TBA
-2. Basic Data Analysis (33%), due TBA
-3. Data Retrieval & Modelling (33%), due TBA
+## Assesments
+1. Visualisations (33%): Assesment tasks will be handed out on 18/03/22. Please submit it by 01/04/22 NZT.
+2. Basic Data Analysis (33%): Assesment tasks will be handed out on 27/04/22. Please submit it by 11/05/22 NZT.
+3. Data Retrieval & Modelling (33%): Assesment tasks will be handed out on 08/06/22. Please submit it by 22/06/22 NZT.
 
 ## About the Lecturer
 Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and the founder of You Say Data, a New Zealand-based digital upskilling and data analysis company. He has lectured in Computer Science, Digital Humanities, and Data Science at the University of Leipzig and currently holds an honorary position as Fellow for Historical Language Processing and Data Analysis at Harvard University’s Center for Hellenic Studies. Dr Koentges is also a certified [RStudio Education partner](https://education.rstudio.com/trainers/people/kontges+thomas/).
@@ -56,7 +56,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 5 Data Transformation
 
-### Assesment 1: Visualisation
+**Assesment task 1 "Visualisation" will be handed out **
 
 ### Class 4: Exploratory Data Analysis | 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -89,7 +89,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 21 Iteration
 
-### Assesment 2: Basic Analysis
+**Assesment task 2 "Basic Analysis" will be handed out **
 
 ### Class 10: Introduction to Modelling | 29/04/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -128,7 +128,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 ### Class 18: Working with databases in R | 08/06/22, 09:00am - 12:00pm
 - (not in book) Finding data in our data warehouse (Snowflake), getting it out to use, and putting it in if required.
 
-### Assesment 3: Data Retrieval & Modelling
+**Assesment task 3 "Data Retrieval & Modelling" will be handed out **
 
 ### Class 19: Building Dashboards for Colleagues and Collaborators | 10/06/22, 09:00am - 12:00pm
 - (not in book) Building Dash Boards with RShiny
