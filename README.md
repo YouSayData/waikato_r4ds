@@ -56,7 +56,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 5 Data Transformation
 
-**Assesment task 1 "Visualisation" will be handed out **
+**Assesment task 1 "Visualisation" will be handed out**
 
 ### Class 4: Exploratory Data Analysis | Friday 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -72,6 +72,8 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 12 Tidy data
 - 13 Relational data
+
+**Assessment 1 due**
 
 ### Class 7: Data Types Focus: Strings, Factors, Dates | Friday 08/04/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -91,7 +93,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 21 Iteration
 
-**Assesment task 2 "Basic Analysis" will be handed out **
+**Assesment task 2 "Basic Analysis" will be handed out**
 
 ### Class 10: Introduction to Modelling | Friday 29/04/22, 09:00am - 12:00pm
 *Chapters covered:*
@@ -105,6 +107,8 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 ### Class 12: Using Many Models | Wednesday 11/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 25 Many models
+
+**Assessment 2 due**
 
 ### Class 13: Using tidymodels | Friday 13/05/22, 09:00am - 12:00pm
 - (not in book) tidymodels
@@ -130,10 +134,14 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 ### Class 18: Working with databases in R | Wednesday 08/06/22, 09:00am - 12:00pm
 - (not in book) Finding data in a data warehouse (e.g. Snowflake), getting it out for analysis, and putting it in if required.
 
-**Assesment task 3 "Data Retrieval & Modelling" will be handed out **
+**Assesment task 3 "Data Retrieval & Modelling" will be handed out**
 
 ### Class 19: Building Dashboards for Colleagues and Collaborators | Friday 10/06/22, 09:00am - 12:00pm
 - (not in book) Building Dashboards with RShiny
 
+
 ### Class 20: Geospatial Visualisations | Friday 17/06/22, 09:00am - 12:00pm
 - (not in book) Brief introduction to geospatial visualisation (maps) and analysis
+
+**Final Assessment 3 due by 22/06/22 NZT**
+
