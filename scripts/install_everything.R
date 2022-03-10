@@ -1,1 +1,1 @@
-install.packages(c("tidyverse", "esquisse", "patchwork", "gt", "tidymdodels", "nycflights13", "modelr"))
+install.packages(c("tidyverse", "esquisse", "patchwork", "gt", "tidymodels", "nycflights13", "modelr"))
