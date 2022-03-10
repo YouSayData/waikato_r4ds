@@ -17,9 +17,9 @@ At the end of the course, participants will have reached an advanced knowledge o
 - Course Book: [R for Data Science](https://r4ds.had.co.nz)
 - Course Book Solutions: [Unofficial solutions for “R for Data Science"](https://jrnold.github.io/r4ds-exercise-solutions/](https://jrnold.github.io/r4ds-exercise-solutions/)
 - Course Code Repository: [Github Repository](https://github.com/YouSayData/waikato_r4ds)
-- Course Chat: [You Say Data - Waikato R4DS Chat Group Signup](https://yousaydata.com/mattermost/signup_user_complete/?id=nip5oiq1ij838f8cdby58mkuky)
-- Course Zoom Meeting Link: [Zoom Link](https://zoom.us/j/97383276039?pwd=VWJ3bVNoWnBNUzRvSU5uTTFSa0UwUT09)
-- Course Moodle: TBA
+- Course Chat: [See Paper Outline or Email](https://paperoutlines.waikato.ac.nz/outline/WSAFE589-22A%20(HAM))
+- Course Zoom Meeting Link: [See Paper Outline or Email](https://paperoutlines.waikato.ac.nz/outline/WSAFE589-22A%20(HAM))
+- Course Moodle: [See Paper Outline or Email](https://paperoutlines.waikato.ac.nz/outline/WSAFE589-22A%20(HAM))
 
 ## Additional Material & Resources
 - RMarkdown: [RMarkdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.137220080.1164186249.1645344339-1404414581.1642662031)
