@@ -10,7 +10,7 @@ At the end of today, participants should be able to set up a basic project struc
 
 # Friday
 
-This class we will be discussing chapters 5 of the [R4DS Book](https://r4ds.had.co.nz).
+This class we will be discussing chapter 5 of the [R4DS Book](https://r4ds.had.co.nz).
 
 We will also work along on this [online](https://yousayr.com/ds-intro/introVis/) scripts which we hadn't covered so far. 
 
