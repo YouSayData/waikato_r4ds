@@ -8,6 +8,12 @@ We will also work along on this [online](https://yousayr.com/ds-intro/introVis/)
 
 At the end of today, participants should be able to set up a basic project structure and find strategies to create plots like [these](https://yousayr.com/ds-intro/visChallenge/).
 
+# Friday
+
+This class we will be discussing chapters 5 of the [R4DS Book](https://r4ds.had.co.nz).
+
+We will also work along on this [online](https://yousayr.com/ds-intro/introVis/) scripts which we hadn't covered so far. 
+
 ## R Libraries used
 
 ```
