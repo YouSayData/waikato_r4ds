@@ -60,6 +60,7 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 
 ### Class 4: Exploratory Data Analysis (Changed to Git and Data Transformation)| Friday 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
+**Don't forget to update the syllabus before next class**
 - (not in book) Working with git (and GitHub) to find, re-use, version control, collaborate on and store code
 - 5 Data Transformation
 
