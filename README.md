@@ -1,5 +1,7 @@
 # Syllabus
 
+small update
+
 ## Description
 
 In this course participants will learn to use the R programming language, with a particular focus on using R for handling, visualising, analysing research data, and communicate research outputs. These are important skills for today's scientists (including agriscience), economists (including agricultural economics) and business professionals (including agribusiness). This course will highlight strategies for developing an efficient workflow centred around R and RStudio. After learning the basics, we will focus on using R for exploratory data analysis, the production of more complex research visualisations, statistical modelling, and employing R for research communication. Additionally, we will look into the basics of working with databases in R and managing our research data and output with git.
