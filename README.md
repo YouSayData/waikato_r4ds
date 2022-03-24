@@ -58,9 +58,12 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 
 **Assesment task 1 "Visualisation" will be handed out**
 
-### Class 4: Exploratory Data Analysis | Friday 25/03/22, 09:00am - 12:00pm
+### Class 4: Exploratory Data Analysis (Changed to Git and Data Transformation)| Friday 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
-- 7 Exploratory Data Analysis
+- (not in book) Working with git (and GitHub) to find, re-use, version control, collaborate on and store code
+- 5 Data Transformation
+
+- Postponed to next week: 7 Exploratory Data Analysis
 
 ### Class 5: Data Structure and Import Data | Wednesday 30/03/22, 09:00am - 12:00pm
 *Chapters covered:*
