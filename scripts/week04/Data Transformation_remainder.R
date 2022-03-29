@@ -30,14 +30,27 @@ flights
 #   c. Were operated by United, American, or Delta
 #   d. Departed in summer (July, August, and September)
 #   e. Arrived more than two hours late, but didn’t leave late
+(Arr_late <- filter(flights, arr_delay >120 & dep_delay <= 0))
+filter(flights, arr_delay >120 & dep_delay <= 0)
+
 #   f. Were delayed by at least an hour, but made up over 30 minutes in flight
+(speedy <- filter(flights, dep_delay >= 60, (dep_delay - arr_delay) > 30))
+filter(flights, dep_delay >= 60 & arr_delay < (dep_delay -30))
+
 #   g. Departed between midnight and 6am (inclusive)
+filter(flights, between(dep_time, 0, 600))
+filter(flights, dep_time == 2400)
+
+early_departure <- filter(flights, dep_time == 2400 | dep_time <= 600)
+filter(flights, between(dep_time %% 2400, 0, 600))
+
 # 2. Discuss: Why is NA ^ 0 not missing? Why is NA | TRUE not missing? Why is FALSE & NA not missing? Can you figure out the general rule? (NA * 0 is a tricky counterexample!)
 
 # arrange -----------------------------------------------------------------
 
 arrange(flights, year, month, day)
 arrange(flights, desc(dep_delay))
+arrange(flights, -dep_delay)
 df <- tibble(x = c(5, 2, NA))
 arrange(df, x)
 arrange(df, desc(x))
@@ -46,8 +59,26 @@ arrange(df, desc(x))
 # arrange() main group exercises ------------------------------------------
 
 # 1. How could you use arrange() to sort all missing values to the start? (Hint: use is.na()).
+arrange(df, !is.na(x), x) # <- turns the logical test around
+arrange(df, -is.na(x), x) # <- multiplies the logical test with -1
+arrange(df, desc(is.na(x)), x) # <- changes the direction of the order
+
 # 2. Sort flights to find the most delayed flights. Find the flights that left earliest.
+arrange(flights, -dep_delay)
+arrange(flights, -arr_delay)
+arrange(flights, dep_time)
+
+arrange(flights, -dep_delay) %>% glimpse
+arrange(flights, -dep_delay) |> glimpse()
+
 # 3. Sort flights to find the fastest flights.
+
+flights %>% 
+  mutate(fast_flights = (distance / air_time) * 60) %>% 
+  arrange(-fast_flights) %>%
+  glimpse
+
+arrange(flights, air_time / distance)
 
 # select() ------------------------------------------------------------------
 
@@ -55,6 +86,7 @@ arrange(df, desc(x))
 select(flights, year, month, day)
 # Select all columns between year and day (inclusive)
 select(flights, year:day)
+select(flights, 2,5,7)
 # Select all columns except those from year to day (inclusive)
 select(flights, -(year:day))
 select(flights, starts_with("d"))
@@ -70,6 +102,18 @@ select(flights, time_hour, air_time, everything())
 
 # select() breakout group exercises ---------------------------------------
 # 1. Brainstorm as many ways as possible to select dep_time, dep_delay, arr_time, and arr_delay from flights.
+select(flights, matches("^(dep|arr).*")) %>% glimpse # Choice 1
+select(flights, "dep_time", "dep_delay", "arr_time", "arr_delay")
+select(flights, dep_time, dep_delay, arr_time, arr_delay)
+select(flights, c(4, 6, 7, 9))
+select(flights, starts_with(c("dep","arr"))) # Choice 5
+select(flights, -c(1:3, 5, 8, 10:19))%>% glimpse() # Choice 2
+select(flights, ends_with("time") | ends_with("delay")) %>% # Choice 3
+  select(!starts_with("sched") & !starts_with("air"))
+
+select(flights, ends_with("_delay") |  # Choice 4
+         ends_with("_time") & 
+         !(contains("sched") | contains("air")))
 
 # mutate() ----------------------------------------------------------------
 

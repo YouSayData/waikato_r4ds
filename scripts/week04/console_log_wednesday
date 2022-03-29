@@ -1,0 +1,1000 @@
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     1     1      517            515         2      830            819        11 UA        1545 N14228 
+ 2  2013     1     1      533            529         4      850            830        20 UA        1714 N24211 
+ 3  2013     1     1      542            540         2      923            850        33 AA        1141 N619AA 
+ 4  2013     1     1      544            545        -1     1004           1022       -18 B6         725 N804JB 
+ 5  2013     1     1      554            600        -6      812            837       -25 DL         461 N668DN 
+ 6  2013     1     1      554            558        -4      740            728        12 UA        1696 N39463 
+ 7  2013     1     1      555            600        -5      913            854        19 B6         507 N516JB 
+ 8  2013     1     1      557            600        -3      709            723       -14 EV        5708 N829AS 
+ 9  2013     1     1      557            600        -3      838            846        -8 B6          79 N593JB 
+10  2013     1     1      558            600        -2      753            745         8 AA         301 N3ALAA 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(c("dep_time", "sched_dep_time")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     4    10        1           1930       271      106           2101       245 UA        1703 N33203 
+ 2  2013     5    22        1           1935       266      154           2140       254 EV        4361 N27200 
+ 3  2013     6    24        1           1950       251      105           2130       215 AA         363 N546AA 
+ 4  2013     7     1        1           2029       212      236           2359       157 B6         915 N653JB 
+ 5  2013     1    31        1           2100       181      124           2225       179 WN         530 N550WN 
+ 6  2013     2    11        1           2100       181      111           2225       166 WN         530 N231WN 
+ 7  2013     3    18        1           2128       153      247           2355       172 B6          97 N760JB 
+ 8  2013     6    25        1           2130       151      249             14       155 B6        1371 N607JB 
+ 9  2013     2    24        1           2245        76      121           2354        87 B6         608 N216JB 
+10  2013     1    13        1           2249        72      108           2357        71 B6          22 N206JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(select(flights, starts_with("d"))))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(select(flights, starts_with("d")))`.
+Caused by error in `across()`:
+! Must subset columns with a valid subscript vector.
+x Subscript has the wrong type `tbl_df<
+  day      : integer
+  dep_time : integer
+  dep_delay: double
+  dest     : character
+  distance : double
+>`.
+ℹ It must be numeric or character.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = select(flights, starts_with("d"))))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = select(flights, starts_with("d")))`.
+Caused by error in `across()`:
+! Must subset columns with a valid subscript vector.
+x Subscript has the wrong type `tbl_df<
+  day      : integer
+  dep_time : integer
+  dep_delay: double
+  dest     : character
+  distance : double
+>`.
+ℹ It must be numeric or character.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = select(flights, -dest, starts_with("d"))))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = select(flights, -dest, starts_with("d")))`.
+Caused by error in `across()`:
+! Must subset columns with a valid subscript vector.
+x Subscript has the wrong type `tbl_df<
+  year          : integer
+  month         : integer
+  day           : integer
+  dep_time      : integer
+  sched_dep_time: integer
+  dep_delay     : double
+  arr_time      : integer
+  sched_arr_time: integer
+  arr_delay     : double
+  carrier       : character
+  flight        : integer
+  tailnum       : character
+  origin        : character
+  air_time      : double
+  distance      : double
+  hour          : double
+  minute        : double
+  time_hour     : datetime<America/New_York>
+  dest          : character
+>`.
+ℹ It must be numeric or character.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(select(flights, contains("ea"))))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(select(flights, contains("ea")))`.
+Caused by error in `across()`:
+! Must subset columns with a valid subscript vector.
+x Subscript has the wrong type `tbl_df<year:integer>`.
+ℹ It must be numeric or character.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(select(flights, contains("ea")))
++ 
+> flights %>% arrange(across(select(contains("ea")))
++ )
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(select(contains("ea")))`.
+Caused by error in `across()`:
+! no applicable method for 'select' applied to an object of class "c('integer', 'numeric')"
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(select(contains("ea"))))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(select(contains("ea")))`.
+Caused by error in `across()`:
+! no applicable method for 'select' applied to an object of class "c('integer', 'numeric')"
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = select(contains("ea"))))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = select(contains("ea")))`.
+Caused by error in `across()`:
+! no applicable method for 'select' applied to an object of class "c('integer', 'numeric')"
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(select(matches("(.)\\1")))
++ )
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(select(matches("(.)\\1")))`.
+Caused by error in `across()`:
+! no applicable method for 'select' applied to an object of class "c('integer', 'numeric')"
+Run `rlang::last_error()` to see where the error occurred.
+> str_detect(names(flights), "(.)\\1")
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[19] FALSE
+> # you can use select to move columns by using the helper function everything()
+> select(flights, time_hour, air_time, everything())
+# A tibble: 336,776 × 19
+   time_hour           air_time  year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+   <dttm>                 <dbl> <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+ 1 2013-01-01 05:00:00      227  2013     1     1      517            515         2      830            819
+ 2 2013-01-01 05:00:00      227  2013     1     1      533            529         4      850            830
+ 3 2013-01-01 05:00:00      160  2013     1     1      542            540         2      923            850
+ 4 2013-01-01 05:00:00      183  2013     1     1      544            545        -1     1004           1022
+ 5 2013-01-01 06:00:00      116  2013     1     1      554            600        -6      812            837
+ 6 2013-01-01 05:00:00      150  2013     1     1      554            558        -4      740            728
+ 7 2013-01-01 06:00:00      158  2013     1     1      555            600        -5      913            854
+ 8 2013-01-01 06:00:00       53  2013     1     1      557            600        -3      709            723
+ 9 2013-01-01 06:00:00      140  2013     1     1      557            600        -3      838            846
+10 2013-01-01 06:00:00      138  2013     1     1      558            600        -2      753            745
+# … with 336,766 more rows, and 9 more variables: arr_delay <dbl>, carrier <chr>, flight <int>, tailnum <chr>,
+#   origin <chr>, dest <chr>, distance <dbl>, hour <dbl>, minute <dbl>
+> flights %>% arrange(across(.cols = 1:3)))
+Error: unexpected ')' in "flights %>% arrange(across(.cols = 1:3)))"
+> flights %>% arrange(across(.cols = 1:3))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     1     1      517            515         2      830            819        11 UA        1545 N14228 
+ 2  2013     1     1      533            529         4      850            830        20 UA        1714 N24211 
+ 3  2013     1     1      542            540         2      923            850        33 AA        1141 N619AA 
+ 4  2013     1     1      544            545        -1     1004           1022       -18 B6         725 N804JB 
+ 5  2013     1     1      554            600        -6      812            837       -25 DL         461 N668DN 
+ 6  2013     1     1      554            558        -4      740            728        12 UA        1696 N39463 
+ 7  2013     1     1      555            600        -5      913            854        19 B6         507 N516JB 
+ 8  2013     1     1      557            600        -3      709            723       -14 EV        5708 N829AS 
+ 9  2013     1     1      557            600        -3      838            846        -8 B6          79 N593JB 
+10  2013     1     1      558            600        -2      753            745         8 AA         301 N3ALAA 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(.cols = year:mont))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = year:mont)`.
+Caused by error in `across()`:
+! Can't subset columns that don't exist.
+x Column `mont` doesn't exist.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = year:month))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     1     1      517            515         2      830            819        11 UA        1545 N14228 
+ 2  2013     1     1      533            529         4      850            830        20 UA        1714 N24211 
+ 3  2013     1     1      542            540         2      923            850        33 AA        1141 N619AA 
+ 4  2013     1     1      544            545        -1     1004           1022       -18 B6         725 N804JB 
+ 5  2013     1     1      554            600        -6      812            837       -25 DL         461 N668DN 
+ 6  2013     1     1      554            558        -4      740            728        12 UA        1696 N39463 
+ 7  2013     1     1      555            600        -5      913            854        19 B6         507 N516JB 
+ 8  2013     1     1      557            600        -3      709            723       -14 EV        5708 N829AS 
+ 9  2013     1     1      557            600        -3      838            846        -8 B6          79 N593JB 
+10  2013     1     1      558            600        -2      753            745         8 AA         301 N3ALAA 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(.cols = contains("ea")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     1     1      517            515         2      830            819        11 UA        1545 N14228 
+ 2  2013     1     1      533            529         4      850            830        20 UA        1714 N24211 
+ 3  2013     1     1      542            540         2      923            850        33 AA        1141 N619AA 
+ 4  2013     1     1      544            545        -1     1004           1022       -18 B6         725 N804JB 
+ 5  2013     1     1      554            600        -6      812            837       -25 DL         461 N668DN 
+ 6  2013     1     1      554            558        -4      740            728        12 UA        1696 N39463 
+ 7  2013     1     1      555            600        -5      913            854        19 B6         507 N516JB 
+ 8  2013     1     1      557            600        -3      709            723       -14 EV        5708 N829AS 
+ 9  2013     1     1      557            600        -3      838            846        -8 B6          79 N593JB 
+10  2013     1     1      558            600        -2      753            745         8 AA         301 N3ALAA 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> select(flights, matches("(.)\\1"))
+# A tibble: 336,776 × 4
+   arr_time sched_arr_time arr_delay carrier
+      <int>          <int>     <dbl> <chr>  
+ 1      830            819        11 UA     
+ 2      850            830        20 UA     
+ 3      923            850        33 AA     
+ 4     1004           1022       -18 B6     
+ 5      812            837       -25 DL     
+ 6      740            728        12 UA     
+ 7      913            854        19 B6     
+ 8      709            723       -14 EV     
+ 9      838            846        -8 B6     
+10      753            745         8 AA     
+# … with 336,766 more rows
+> 
+> select(flights, matches("(.)\\1"), -carrier)
+# A tibble: 336,776 × 3
+   arr_time sched_arr_time arr_delay
+      <int>          <int>     <dbl>
+ 1      830            819        11
+ 2      850            830        20
+ 3      923            850        33
+ 4     1004           1022       -18
+ 5      812            837       -25
+ 6      740            728        12
+ 7      913            854        19
+ 8      709            723       -14
+ 9      838            846        -8
+10      753            745         8
+# … with 336,766 more rows
+> 
+> flights %>% arrange(across(.cols = select(flights, matches("(.)\\1"), -carrier)))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = select(flights, matches("(.)\\1"), -carrier))`.
+Caused by error in `across()`:
+! Must subset columns with a valid subscript vector.
+x Subscript has the wrong type `tbl_df<
+  arr_time      : integer
+  sched_arr_time: integer
+  arr_delay     : double
+>`.
+ℹ It must be numeric or character.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = select(flights, matches("(.)\\1"), -carrier, -arr_delay)))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = select(flights, matches("(.)\\1"), -carrier,
+  -arr_delay))`.
+Caused by error in `across()`:
+! Must subset columns with a valid subscript vector.
+x Subscript has the wrong type `tbl_df<
+  arr_time      : integer
+  sched_arr_time: integer
+>`.
+ℹ It must be numeric or character.
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = select(matches("(.)\\1"), -carrier, -arr_delay)))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = select(matches("(.)\\1"), -carrier,
+  -arr_delay))`.
+Caused by error in `across()`:
+! no applicable method for 'select' applied to an object of class "c('integer', 'numeric')"
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = (matches("(.)\\1"), -carrier, -arr_delay)))
+Error: unexpected ',' in "flights %>% arrange(across(.cols = (matches("(.)\\1"),"
+> flights %>% arrange(across(.cols = matches("(.)\\1"))
++ )
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(matches("(.)\\1")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(.cols = matches("(.)\\1")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(.cols = matches("(.)\\1"), -carrier))
+Error in `arrange()`:
+! Problem with the implicit `transmute()` step.
+x Problem while computing `..1 = across(.cols = matches("(.)\\1"), -carrier)`.
+Caused by error in `-carrier`:
+! invalid argument to unary operator
+Run `rlang::last_error()` to see where the error occurred.
+> flights %>% arrange(across(.cols = {matches("(.)\\1"), -carrier}))
+Error: unexpected ',' in "flights %>% arrange(across(.cols = {matches("(.)\\1"),"
+> flights %>% arrange(across(.cols = matches("(.)\\1")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(matches("(.)\\1")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> flights %>% arrange(across(matches("(.)\\1")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> select(flights, matches("(.)\\1"))
+# A tibble: 336,776 × 4
+   arr_time sched_arr_time arr_delay carrier
+      <int>          <int>     <dbl> <chr>  
+ 1      830            819        11 UA     
+ 2      850            830        20 UA     
+ 3      923            850        33 AA     
+ 4     1004           1022       -18 B6     
+ 5      812            837       -25 DL     
+ 6      740            728        12 UA     
+ 7      913            854        19 B6     
+ 8      709            723       -14 EV     
+ 9      838            846        -8 B6     
+10      753            745         8 AA     
+# … with 336,766 more rows
+> 
+> select(flights, matches("(.)\\1"), -carrier)
+# A tibble: 336,776 × 3
+   arr_time sched_arr_time arr_delay
+      <int>          <int>     <dbl>
+ 1      830            819        11
+ 2      850            830        20
+ 3      923            850        33
+ 4     1004           1022       -18
+ 5      812            837       -25
+ 6      740            728        12
+ 7      913            854        19
+ 8      709            723       -14
+ 9      838            846        -8
+10      753            745         8
+# … with 336,766 more rows
+> 
+> flights %>% arrange(across(matches("(.)\\1")))
+# A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
+   <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl> <chr>    <int> <chr>  
+ 1  2013     5     1     2237           2245        -8        1              1         0 B6         128 N179JB 
+ 2  2013     5    29     2251           2245         6        1              1         0 B6         128 N316JB 
+ 3  2013     9    15     2247           2246         1        1              1         0 B6         486 N187JB 
+ 4  2013     1    14     2122           2130        -8        1              2        -1 B6          97 N625JB 
+ 5  2013     5    10     2241           2245        -4        1              2        -1 B6         608 N184JB 
+ 6  2013    10    29     2238           2245        -7        1              3        -2 B6         486 N334JB 
+ 7  2013    12    23     2242           2245        -3        1              3        -2 B6         486 N279JB 
+ 8  2013     5    30     2254           2255        -1        1              4        -3 B6        1018 N564JB 
+ 9  2013     6    11     2258           2255         3        1              4        -3 B6        1018 N806JB 
+10  2013     6    22     2244           2245        -1        1              4        -3 B6         108 N187JB 
+# … with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
+#   hour <dbl>, minute <dbl>, time_hour <dttm>
+> # select() breakout group exercises ---------------------------------------
+> # 1. Brainstorm as many ways as possible to select dep_time, dep_delay, arr_time, and arr_delay from flights.
+> select(flights, matches("^(dep|arr).*")) %>% glimpse
+Rows: 336,776
+Columns: 4
+$ dep_time  <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, 558, 558, 558, 559, 559, 559, 600, 60…
+$ dep_delay <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1, 0, -1, 0, 0, 1, -8, -3, -4, -4, 0, …
+$ arr_time  <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849, 853, 924, 923, 941, 702, 854, 851, 8…
+$ arr_delay <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -14, 31, -4, -8, -7, 12, -6, -8, 16, -1…
+> # select() breakout group exercises ---------------------------------------
+> # 1. Brainstorm as many ways as possible to select dep_time, dep_delay, arr_time, and arr_delay from flights.
+> select(flights, matches("^(dep|arr).*")) %>% glimpse
+Rows: 336,776
+Columns: 4
+$ dep_time  <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, 558, 558, 558, 559, 559, 559, 600, 60…
+$ dep_delay <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1, 0, -1, 0, 0, 1, -8, -3, -4, -4, 0, …
+$ arr_time  <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849, 853, 924, 923, 941, 702, 854, 851, 8…
+$ arr_delay <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -14, 31, -4, -8, -7, 12, -6, -8, 16, -1…
+> select(flights, "dep_time", "dep_delay", "arr_time", "arr_delay")
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, c(4, 6, 7, 9))
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, starts_with(c("dep","arr")))
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, -c(1:3, 5, 8, 10:19))%>% glimpse()
+Rows: 336,776
+Columns: 4
+$ dep_time  <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, 558, 558, 558, 559, 559, 559, 600, 60…
+$ dep_delay <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1, 0, -1, 0, 0, 1, -8, -3, -4, -4, 0, …
+$ arr_time  <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849, 853, 924, 923, 941, 702, 854, 851, 8…
+$ arr_delay <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -14, 31, -4, -8, -7, 12, -6, -8, 16, -1…
+> select(flights, ends_with("time") | ends_with("delay"))
+# A tibble: 336,776 × 7
+   dep_time sched_dep_time arr_time sched_arr_time air_time dep_delay arr_delay
+      <int>          <int>    <int>          <int>    <dbl>     <dbl>     <dbl>
+ 1      517            515      830            819      227         2        11
+ 2      533            529      850            830      227         4        20
+ 3      542            540      923            850      160         2        33
+ 4      544            545     1004           1022      183        -1       -18
+ 5      554            600      812            837      116        -6       -25
+ 6      554            558      740            728      150        -4        12
+ 7      555            600      913            854      158        -5        19
+ 8      557            600      709            723       53        -3       -14
+ 9      557            600      838            846      140        -3        -8
+10      558            600      753            745      138        -2         8
+# … with 336,766 more rows
+> select(flights, ends_with("time") | ends_with("delay")) %>%
++   select(!starts_with("sched") & !starts_with("air"))
+# A tibble: 336,776 × 4
+   dep_time arr_time dep_delay arr_delay
+      <int>    <int>     <dbl>     <dbl>
+ 1      517      830         2        11
+ 2      533      850         4        20
+ 3      542      923         2        33
+ 4      544     1004        -1       -18
+ 5      554      812        -6       -25
+ 6      554      740        -4        12
+ 7      555      913        -5        19
+ 8      557      709        -3       -14
+ 9      557      838        -3        -8
+10      558      753        -2         8
+# … with 336,766 more rows
+> select(flights, dep_time, dep_delay, arr_time, arr_delay)
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, "dep_time", "dep_delay", "arr_time", "arr_delay", "mupitz")
+Error in `select()`:
+! Can't subset columns that don't exist.
+x Column `mupitz` doesn't exist.
+Run `rlang::last_error()` to see where the error occurred.
+> select(flights, dep_time, dep_delay, arr_time, arr_delay, mumpitz)
+Error in `select()`:
+! Can't subset columns that don't exist.
+x Column `mumpitz` doesn't exist.
+Run `rlang::last_error()` to see where the error occurred.
+> select(flights, any_of("dep_time", "dep_delay", "arr_time", "arr_delay", "mupitz"))
+Error in `select()`:
+! `...` must be empty.
+x Problematic arguments:
+• ..1 = "dep_delay"
+• ..2 = "arr_time"
+• ..3 = "arr_delay"
+• ..4 = "mupitz"
+ℹ Did you forget to name an argument?
+Run `rlang::last_error()` to see where the error occurred.
+> select(flights, any_of(c("dep_time", "dep_delay", "arr_time", "arr_delay", "mupitz")))
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, ends_with("_delay") | 
++          ends_with("_time") & 
++          !(contains("sched") | contains("air")))
+# A tibble: 336,776 × 4
+   dep_delay arr_delay dep_time arr_time
+       <dbl>     <dbl>    <int>    <int>
+ 1         2        11      517      830
+ 2         4        20      533      850
+ 3         2        33      542      923
+ 4        -1       -18      544     1004
+ 5        -6       -25      554      812
+ 6        -4        12      554      740
+ 7        -5        19      555      913
+ 8        -3       -14      557      709
+ 9        -3        -8      557      838
+10        -2         8      558      753
+# … with 336,766 more rows
+> select(flights, ends_with("_delay") | 
++          ends_with("_time"))
+# A tibble: 336,776 × 7
+   dep_delay arr_delay dep_time sched_dep_time arr_time sched_arr_time air_time
+       <dbl>     <dbl>    <int>          <int>    <int>          <int>    <dbl>
+ 1         2        11      517            515      830            819      227
+ 2         4        20      533            529      850            830      227
+ 3         2        33      542            540      923            850      160
+ 4        -1       -18      544            545     1004           1022      183
+ 5        -6       -25      554            600      812            837      116
+ 6        -4        12      554            558      740            728      150
+ 7        -5        19      555            600      913            854      158
+ 8        -3       -14      557            600      709            723       53
+ 9        -3        -8      557            600      838            846      140
+10        -2         8      558            600      753            745      138
+# … with 336,766 more rows
+> select(flights, (ends_with("_delay") | 
++          ends_with("_time")) & 
++          (!(contains("sched") | contains("air"))))
+# A tibble: 336,776 × 4
+   dep_delay arr_delay dep_time arr_time
+       <dbl>     <dbl>    <int>    <int>
+ 1         2        11      517      830
+ 2         4        20      533      850
+ 3         2        33      542      923
+ 4        -1       -18      544     1004
+ 5        -6       -25      554      812
+ 6        -4        12      554      740
+ 7        -5        19      555      913
+ 8        -3       -14      557      709
+ 9        -3        -8      557      838
+10        -2         8      558      753
+# … with 336,766 more rows
+> select(flights, ends_with("_delay") | 
++          ends_with("_time") & 
++          !(contains("sched") | contains("air")))
+# A tibble: 336,776 × 4
+   dep_delay arr_delay dep_time arr_time
+       <dbl>     <dbl>    <int>    <int>
+ 1         2        11      517      830
+ 2         4        20      533      850
+ 3         2        33      542      923
+ 4        -1       -18      544     1004
+ 5        -6       -25      554      812
+ 6        -4        12      554      740
+ 7        -5        19      555      913
+ 8        -3       -14      557      709
+ 9        -3        -8      557      838
+10        -2         8      558      753
+# … with 336,766 more rows
+> select(flights, matches("^(dep|arr).*"))
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, starts_with(c("dep","arr")))
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> select(flights, matches("^(dep|arr).*"))
+# A tibble: 336,776 × 4
+   dep_time dep_delay arr_time arr_delay
+      <int>     <dbl>    <int>     <dbl>
+ 1      517         2      830        11
+ 2      533         4      850        20
+ 3      542         2      923        33
+ 4      544        -1     1004       -18
+ 5      554        -6      812       -25
+ 6      554        -4      740        12
+ 7      555        -5      913        19
+ 8      557        -3      709       -14
+ 9      557        -3      838        -8
+10      558        -2      753         8
+# … with 336,766 more rows
+> # smaller tibble
+> flights_sml <- select(flights, 
++                       year:day, 
++                       ends_with("delay"), 
++                       distance, 
++                       air_time
++ )
+> flights_sml
+# A tibble: 336,776 × 7
+    year month   day dep_delay arr_delay distance air_time
+   <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl>
+ 1  2013     1     1         2        11     1400      227
+ 2  2013     1     1         4        20     1416      227
+ 3  2013     1     1         2        33     1089      160
+ 4  2013     1     1        -1       -18     1576      183
+ 5  2013     1     1        -6       -25      762      116
+ 6  2013     1     1        -4        12      719      150
+ 7  2013     1     1        -5        19     1065      158
+ 8  2013     1     1        -3       -14      229       53
+ 9  2013     1     1        -3        -8      944      140
+10  2013     1     1        -2         8      733      138
+# … with 336,766 more rows
+> # create new columns
+> mutate(flights_sml,
++        gain = dep_delay - arr_delay,
++        speed = distance / air_time * 60
++ )
+# A tibble: 336,776 × 9
+    year month   day dep_delay arr_delay distance air_time  gain speed
+   <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl> <dbl> <dbl>
+ 1  2013     1     1         2        11     1400      227    -9  370.
+ 2  2013     1     1         4        20     1416      227   -16  374.
+ 3  2013     1     1         2        33     1089      160   -31  408.
+ 4  2013     1     1        -1       -18     1576      183    17  517.
+ 5  2013     1     1        -6       -25      762      116    19  394.
+ 6  2013     1     1        -4        12      719      150   -16  288.
+ 7  2013     1     1        -5        19     1065      158   -24  404.
+ 8  2013     1     1        -3       -14      229       53    11  259.
+ 9  2013     1     1        -3        -8      944      140     5  405.
+10  2013     1     1        -2         8      733      138   -10  319.
+# … with 336,766 more rows
+> # use columns you created in the same call
+> mutate(flights_sml,
++        gain = dep_delay - arr_delay,
++        hours = air_time / 60,
++        gain_per_hour = gain / hours
++ )
+# A tibble: 336,776 × 10
+    year month   day dep_delay arr_delay distance air_time  gain hours gain_per_hour
+   <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl> <dbl> <dbl>         <dbl>
+ 1  2013     1     1         2        11     1400      227    -9 3.78          -2.38
+ 2  2013     1     1         4        20     1416      227   -16 3.78          -4.23
+ 3  2013     1     1         2        33     1089      160   -31 2.67         -11.6 
+ 4  2013     1     1        -1       -18     1576      183    17 3.05           5.57
+ 5  2013     1     1        -6       -25      762      116    19 1.93           9.83
+ 6  2013     1     1        -4        12      719      150   -16 2.5           -6.4 
+ 7  2013     1     1        -5        19     1065      158   -24 2.63          -9.11
+ 8  2013     1     1        -3       -14      229       53    11 0.883         12.5 
+ 9  2013     1     1        -3        -8      944      140     5 2.33           2.14
+10  2013     1     1        -2         8      733      138   -10 2.3           -4.35
+# … with 336,766 more rows
+> mutate(flights_sml,
++        gain = dep_delay - arr_delay,
++        hours = air_time / 60) %>%
++   mutate(gain_per_hour = gain / hours)
+# A tibble: 336,776 × 10
+    year month   day dep_delay arr_delay distance air_time  gain hours gain_per_hour
+   <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl> <dbl> <dbl>         <dbl>
+ 1  2013     1     1         2        11     1400      227    -9 3.78          -2.38
+ 2  2013     1     1         4        20     1416      227   -16 3.78          -4.23
+ 3  2013     1     1         2        33     1089      160   -31 2.67         -11.6 
+ 4  2013     1     1        -1       -18     1576      183    17 3.05           5.57
+ 5  2013     1     1        -6       -25      762      116    19 1.93           9.83
+ 6  2013     1     1        -4        12      719      150   -16 2.5           -6.4 
+ 7  2013     1     1        -5        19     1065      158   -24 2.63          -9.11
+ 8  2013     1     1        -3       -14      229       53    11 0.883         12.5 
+ 9  2013     1     1        -3        -8      944      140     5 2.33           2.14
+10  2013     1     1        -2         8      733      138   -10 2.3           -4.35
+# … with 336,766 more rows
+> # use transmute to only keep created columns
+> transmute(flights,
++           gain = dep_delay - arr_delay,
++           hours = air_time / 60,
++           gain_per_hour = gain / hours
++ )
+# A tibble: 336,776 × 3
+    gain hours gain_per_hour
+   <dbl> <dbl>         <dbl>
+ 1    -9 3.78          -2.38
+ 2   -16 3.78          -4.23
+ 3   -31 2.67         -11.6 
+ 4    17 3.05           5.57
+ 5    19 1.93           9.83
+ 6   -16 2.5           -6.4 
+ 7   -24 2.63          -9.11
+ 8    11 0.883         12.5 
+ 9     5 2.33           2.14
+10   -10 2.3           -4.35
+# … with 336,766 more rows
+> # use transmute to only keep created columns
+> transmute(flights,
++           year,
++           month,
++           day,
++           gain = dep_delay - arr_delay,
++           hours = air_time / 60,
++           gain_per_hour = gain / hours
++ )
+# A tibble: 336,776 × 6
+    year month   day  gain hours gain_per_hour
+   <int> <int> <int> <dbl> <dbl>         <dbl>
+ 1  2013     1     1    -9 3.78          -2.38
+ 2  2013     1     1   -16 3.78          -4.23
+ 3  2013     1     1   -31 2.67         -11.6 
+ 4  2013     1     1    17 3.05           5.57
+ 5  2013     1     1    19 1.93           9.83
+ 6  2013     1     1   -16 2.5           -6.4 
+ 7  2013     1     1   -24 2.63          -9.11
+ 8  2013     1     1    11 0.883         12.5 
+ 9  2013     1     1     5 2.33           2.14
+10  2013     1     1   -10 2.3           -4.35
+# … with 336,766 more rows
+> 2 ^ 3
+[1] 8
+> flights %>% count(year, month)
+# A tibble: 12 × 3
+    year month     n
+   <int> <int> <int>
+ 1  2013     1 27004
+ 2  2013     2 24951
+ 3  2013     3 28834
+ 4  2013     4 28330
+ 5  2013     5 28796
+ 6  2013     6 28243
+ 7  2013     7 29425
+ 8  2013     8 29327
+ 9  2013     9 27574
+10  2013    10 28889
+11  2013    11 27268
+12  2013    12 28135
+> flights %>% count(year, month) %>% mutate(proportion = n / sum(n))
+# A tibble: 12 × 4
+    year month     n proportion
+   <int> <int> <int>      <dbl>
+ 1  2013     1 27004     0.0802
+ 2  2013     2 24951     0.0741
+ 3  2013     3 28834     0.0856
+ 4  2013     4 28330     0.0841
+ 5  2013     5 28796     0.0855
+ 6  2013     6 28243     0.0839
+ 7  2013     7 29425     0.0874
+ 8  2013     8 29327     0.0871
+ 9  2013     9 27574     0.0819
+10  2013    10 28889     0.0858
+11  2013    11 27268     0.0810
+12  2013    12 28135     0.0835
+> flights %>% count(year, month) %>% mutate(diff_mean_abs = n - mean(n))
+# A tibble: 12 × 4
+    year month     n diff_mean_abs
+   <int> <int> <int>         <dbl>
+ 1  2013     1 27004       -1061. 
+ 2  2013     2 24951       -3114. 
+ 3  2013     3 28834         769. 
+ 4  2013     4 28330         265. 
+ 5  2013     5 28796         731. 
+ 6  2013     6 28243         178. 
+ 7  2013     7 29425        1360. 
+ 8  2013     8 29327        1262. 
+ 9  2013     9 27574        -491. 
+10  2013    10 28889         824. 
+11  2013    11 27268        -797. 
+12  2013    12 28135          70.3
+> flights %>% count(year, month) %>% mutate(diff_mean = n / mean(n))
+# A tibble: 12 × 4
+    year month     n diff_mean
+   <int> <int> <int>     <dbl>
+ 1  2013     1 27004     0.962
+ 2  2013     2 24951     0.889
+ 3  2013     3 28834     1.03 
+ 4  2013     4 28330     1.01 
+ 5  2013     5 28796     1.03 
+ 6  2013     6 28243     1.01 
+ 7  2013     7 29425     1.05 
+ 8  2013     8 29327     1.04 
+ 9  2013     9 27574     0.983
+10  2013    10 28889     1.03 
+11  2013    11 27268     0.972
+12  2013    12 28135     1.00 
+> transmute(flights,
++           dep_time,
++           hour = dep_time %/% 100,
++           minute = dep_time %% 100
++ )
+# A tibble: 336,776 × 3
+   dep_time  hour minute
+      <int> <dbl>  <dbl>
+ 1      517     5     17
+ 2      533     5     33
+ 3      542     5     42
+ 4      544     5     44
+ 5      554     5     54
+ 6      554     5     54
+ 7      555     5     55
+ 8      557     5     57
+ 9      557     5     57
+10      558     5     58
+# … with 336,766 more rows
+> ?logs
+No documentation for ‘logs’ in specified packages and libraries:
+you could try ‘??logs’
+> ?log
+> exp(1)
+[1] 2.718282
+> # logs: log(), log2(), log10()
+> # leading and lagging
+> (x <- 1:10)
+ [1]  1  2  3  4  5  6  7  8  9 10
+> lag(x)
+ [1] NA  1  2  3  4  5  6  7  8  9
+> lead(x)
+ [1]  2  3  4  5  6  7  8  9 10 NA
+> (examplA <- c(22, 26, 30, 34, 38, 42))
+[1] 22 26 30 34 38 42
+> examplA - lag(examplA)
+[1] NA  4  4  4  4  4
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259))
+# A tibble: 5 × 2
+    day new_cases
+  <int>     <dbl>
+1     1        24
+2     2        34
+3     3        78
+4     4       201
+5     5       259
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = cases - lag(cases))
+Error in `mutate()`:
+! Problem while computing `change_in_numbers = cases - lag(cases)`.
+Caused by error:
+! object 'cases' not found
+Run `rlang::last_error()` to see where the error occurred.
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = new_cases - lag(new_cases))
+# A tibble: 5 × 3
+    day new_cases change_in_numbers
+  <int>     <dbl>             <dbl>
+1     1        24                NA
+2     2        34                10
+3     3        78                44
+4     4       201               123
+5     5       259                58
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = new_cases / lag(new_cases))
+# A tibble: 5 × 3
+    day new_cases change_in_numbers
+  <int>     <dbl>             <dbl>
+1     1        24             NA   
+2     2        34              1.42
+3     3        78              2.29
+4     4       201              2.58
+5     5       259              1.29
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = new_cases / lead(new_cases))
+# A tibble: 5 × 3
+    day new_cases change_in_numbers
+  <int>     <dbl>             <dbl>
+1     1        24             0.706
+2     2        34             0.436
+3     3        78             0.388
+4     4       201             0.776
+5     5       259            NA    
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = new_cases / lag(new_cases))
+# A tibble: 5 × 3
+    day new_cases change_in_numbers
+  <int>     <dbl>             <dbl>
+1     1        24             NA   
+2     2        34              1.42
+3     3        78              2.29
+4     4       201              2.58
+5     5       259              1.29
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+> # cummulative functions
+> cumsum(x)
+ [1]  1  3  6 10 15 21 28 36 45 55
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = new_cases - lag(new_cases), active_cases = cumsum(new_cases))
+# A tibble: 5 × 4
+    day new_cases change_in_numbers active_cases
+  <int>     <dbl>             <dbl>        <dbl>
+1     1        24                NA           24
+2     2        34                10           58
+3     3        78                44          136
+4     4       201               123          337
+5     5       259                58          596
+> cummean(x)
+ [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 5.5
+> cumprod(x)
+ [1]       1       2       6      24     120     720    5040   40320  362880 3628800
+> cummin(x)
+ [1] 1 1 1 1 1 1 1 1 1 1
+> cummax(x)
+ [1]  1  2  3  4  5  6  7  8  9 10
+> tibble(day = 1:5, new_cases = c(24,34,78,201,259)) %>% mutate(change_in_numbers = new_cases - lag(new_cases), active_cases = cumsum(new_cases))
+# A tibble: 5 × 4
+    day new_cases change_in_numbers active_cases
+  <int>     <dbl>             <dbl>        <dbl>
+1     1        24                NA           24
+2     2        34                10           58
+3     3        78                44          136
+4     4       201               123          337
+5     5       259                58          596
