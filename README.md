@@ -70,19 +70,24 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 *Chapters covered:*
 - 5 Data Transformation
 - 7 Exploratory Data Analysis
-- 11 Data import
 
 ### Class 6: Data Structures | Tidy Data  / Relational Data | Friday 01/04/22, 09:00am - 12:00pm
 *Chapters covered:*
-- 20 Vectors
-- 10 Tibbles
-- 12 Tidy data
-- 13 Relational data
+- 5 Data Transformation
+- 7 Exploratory Data Analysis
 
 **Assessment 1 due**
 
 ### Class 7: Data Types Focus: Strings, Factors, Dates | Friday 08/04/22, 09:00am - 12:00pm
 *Chapters covered:*
+
+- 7 Exploratory Data Analysis
+- 11 Data import
+- 20 Vectors
+- 10 Tibbles
+- 12 Tidy data
+- 13 Relational data
+
 - 14 Strings
 - 15 Factors
 - 16 Dates and times

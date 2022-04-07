@@ -178,6 +178,27 @@ cummax(x)
 
 # 1. Currently dep_time and sched_dep_time are convenient to look at, but hard to compute with because they’re not really continuous numbers. Convert them to a more convenient representation of number of minutes since midnight.
 
+delay_mins <- mutate(flights, dep_time,
+                     dep_time = dep_time %% 2400,
+                     dhour = dep_time %/% 100,
+                     dminute = dep_time %% 100,
+                     dep_time_mins = (dhour * 60) + dminute
+) %>% glimpse
+
+delays <- mutate(delay_mins, sched_dep_time,
+                 sched_dep_time = sched_dep_time %% 2400,
+                 shour = sched_dep_time %/% 100,
+                 sminute = sched_dep_time %% 100,
+                 sched_dep_mins = (shour * 60) + sminute
+) %>% glimpse
+
+select(delays, dep_time_mins, sched_dep_mins)
+
+flights %>% mutate(dep_time = dep_time %% 2400,
+                   sched_dep_time = sched_dep_time %% 2400,
+                   dep_time_mins = (dep_time %/% 100) * 60 + dep_time %% 100,
+                   sched_dep_mins = (sched_dep_time %/% 100) * 60 + sched_dep_time %% 100
+) %>% glimpse
 
 # summarise() & group_by() ------------------------------------------------
 
@@ -187,6 +208,13 @@ mean(flights$dep_delay, na.rm=TRUE)
 
 by_day <- group_by(flights, year, month, day)
 summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
+
+summarise(by_day, count = n()) %>%
+  summarise(count = sum(count)) %>% 
+  summarise(count = sum(count))
+
+flights %>% count
+
 
 # to pipe or not to pipe --------------------------------------------------
 
@@ -217,3 +245,15 @@ delays <- flights %>%
 ggplot(data = delays, mapping = aes(x = dist, y = delay)) +
   geom_point(aes(size = count), alpha = 1/3) +
   geom_smooth(se = FALSE)
+
+flights %>% 
+  group_by(dest) %>% 
+  summarise(
+    count = n(),
+    dist = mean(distance, na.rm = TRUE),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  filter(count > 20, dest != "HNL") %>%
+  ggplot(aes(dist, delay)) + geom_point(aes(size = count), alpha = 1/3) + geom_smooth(se = F)
+
+
