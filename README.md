@@ -83,18 +83,17 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 
 - 7 Exploratory Data Analysis
 - 11 Data import
-- 20 Vectors
-- 10 Tibbles
 - 12 Tidy data
 - 13 Relational data
-
-- 14 Strings
-- 15 Factors
-- 16 Dates and times
 
 ### Class 8: Programming Style & Principles | Wednesday 13/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 - (not in book) Intro Programming 
+- 20 Vectors
+- 10 Tibbles
+- 14 Strings
+- 15 Factors
+- 16 Dates and times
 - 18 Pipes
 - 19 Functions
 
