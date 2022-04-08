@@ -256,7 +256,16 @@ ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
 
 # Alternative violin
 ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
-  geom_violin()
+  geom_violin(aes(fill = cut)) +
+  geom_point(data = diamonds %>% group_by(cut) %>% summarise(price = median(price))) +
+  geom_label(aes(label = price), 
+            data = diamonds %>% group_by(cut) %>% summarise(price = median(price)),
+            size = 2) +
+  theme_minimal() +
+  ylab("Preis in USD") +
+  xlab("Cut of the Diamond")
+  
+  
 
 # Alternative random-scatter
 ggplot(data = diamonds %>% slice(sample(1:nrow(diamonds), 10000)), mapping = aes(x = cut, y = price)) +
@@ -276,6 +285,18 @@ ggplot(data = diamonds) +
   theme(axis.title=element_blank()) +
   annotate("text", x = 7, y = 16000, adj=1,  family="serif", 
            label = c("Price per\nquality of cut\nin Diamonds."))
+
+# Alternative violin
+ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
+  geom_violin(aes(fill = cut)) +
+  geom_tufteboxplot(mapping = aes(x = cut, y = price)) + 
+  geom_label_repel(aes(label = price), 
+             data = diamonds %>% group_by(cut) %>% summarise(price = median(price)),
+             size = 2) +
+  theme_minimal() +
+  ylab("Preis in USD") +
+  xlab("Cut of the Diamond")
+
 
 # why are better cut diamonds cheaper?!?
 diamonds$cut[1]
@@ -314,10 +335,16 @@ ggplot(data = mpg) +
 ggplot(data = mpg) +
   geom_boxplot(mapping = aes(y = reorder(class, hwy, FUN = median), x = hwy))
 
+mpg %>% 
+  mutate(
+    class = factor(class, levels = c("minivan", "pickup", "subcompact", "compact", "midsize"), ordered =  T)) %>%
+  ggplot() +
+  geom_boxplot(mapping = aes(y = class, x = hwy))
+
+
 
 # Exercise III ------------------------------------------------------------
 # 1. Use what you’ve learned to improve the visualisation of the departure times of cancelled vs. non-cancelled flights.
-# 2. What variable in the diamonds dataset is most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationships lead to lower quality diamonds being more expensive?
 
 nycflights13::flights %>% 
   mutate(
@@ -326,8 +353,61 @@ nycflights13::flights %>%
     sched_min = sched_dep_time %% 100,
     sched_dep_time = sched_hour + sched_min / 60
   ) %>% 
+  ggplot(aes()) + 
+  geom_histogram(aes(x = sched_dep_time, fill = cancelled), binwidth = 0.10)
+
+nycflights13::flights %>% 
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = sched_dep_time %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + sched_min / 60
+  ) %>%
+  ggplot(aes(x=cancelled, y=sched_dep_time)) + 
+  geom_jitter(alpha = .02) +
+  coord_flip()
+
+nycflights13::flights %>% 
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = (sched_dep_time %% 2400) %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + sched_min / 60
+  ) %>% 
   ggplot(aes(sched_dep_time)) + 
-  geom_density(aes(fill = cancelled), alpha = 1/5)
+  geom_density(aes(fill = cancelled), alpha = 1/5) +
+  coord_polar()
+
+nycflights13::flights %>% 
+  mutate(
+    cancelled = is.na(dep_time),
+    am_pm = (sched_dep_time %% 2400) >= 1200,
+    am_pm = ifelse(am_pm, "pm", "am"),
+    sched_hour = (sched_dep_time %% 1200) %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + sched_min / 60
+  ) %>% 
+  ggplot(aes(sched_dep_time)) + 
+  geom_density(aes(fill = cancelled), alpha = 1/5) +
+  coord_polar() +
+  facet_wrap(~am_pm) +
+  theme_minimal()
+
+# 2. What variable in the diamonds dataset is most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationships lead to lower quality diamonds being more expensive?
+
+ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
+  geom_violin(aes(fill = cut)) +
+  geom_point(data = diamonds %>% group_by(cut) %>% summarise(price = median(carat))) +
+  geom_label(aes(label = str_c("median carat: ", price)), 
+             data = diamonds %>% group_by(cut) %>% summarise(price = median(carat)),
+             size = 2) +
+  theme_minimal() +
+  labs(caption = "Median size (carat)", y = "Price in USD",  x = "Cut of the Diamond")
+
+
+ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
+  # geom_count() +
+  geom_smooth()
 
 
 # Two categorical values --------------------------------------------------
@@ -336,7 +416,8 @@ ggplot(data = diamonds) +
   geom_count(mapping = aes(x = cut, y = color))
 
 diamonds %>% 
-  count(color, cut)
+  count(color, cut) %>% 
+  arrange(-n)
 
 diamonds %>% 
   count(color, cut) %>%  
@@ -355,7 +436,9 @@ ggplot(data = diamonds) +
 
 # changing alpha can help overplotting
 ggplot(data = diamonds) + 
-  geom_point(mapping = aes(x = carat, y = price), alpha = 1 / 100)
+  geom_point(mapping = aes(x = carat, y = price, col = clarity), alpha = 1 / 10) +
+  facet_grid(clarity ~ cut) +
+  theme(axis.text = element_text(size = 5))
 
 # other options
 
@@ -411,7 +494,7 @@ diamonds2 <- diamonds %>%
   mutate(resid = exp(resid))
 
 ggplot(data = diamonds2) + 
-  geom_point(mapping = aes(x = carat, y = resid))
+  geom_point(mapping = aes(x = carat, y = resid), alpha = .1)
 
 ggplot(data = diamonds2) + 
   geom_boxplot(mapping = aes(x = cut, y = resid))

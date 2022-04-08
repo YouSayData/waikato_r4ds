@@ -12,6 +12,7 @@ readxl_example()
 readxl_example("clippy.xls")
 xlsx_example <- readxl_example("datasets.xlsx")
 read_excel(xlsx_example)
+read_excel(xlsx_example, sheet = "iris", range = "A1:C4")
 
 readr_example("mtcars.csv")
 read_csv(readr_example("mtcars.csv"))
