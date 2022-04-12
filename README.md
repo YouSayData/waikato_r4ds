@@ -83,24 +83,24 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 
 - 7 Exploratory Data Analysis
 - 11 Data import
-- 12 Tidy data
-- 13 Relational data
 
 ### Class 8: Programming Style & Principles | Wednesday 13/04/22, 09:00am - 12:00pm
 *Chapters covered:*
+- 12 Tidy data
+- 13 Relational data
 - (not in book) Intro Programming 
 - 20 Vectors
 - 10 Tibbles
 - 14 Strings
 - 15 Factors
-- 16 Dates and times
 - 18 Pipes
-- 19 Functions
 
 ### Break - No classes Friday 15/04/22 (Good Friday) or Friday 22/04/22
 
 ### Class 9: Iteration | 27/04/22, Wednesday 09:00am - 12:00pm
 *Chapters covered:*
+- 16 Dates and times
+- 19 Functions
 - 21 Iteration
 
 **Assesment task 2 "Basic Analysis" will be handed out**
