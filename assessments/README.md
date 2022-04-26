@@ -10,7 +10,9 @@ The data set includes a binary representation of a person's sex at birth.
 
 ## Tasks
 
-1. Import the data and call it `babynames`.
+All task are 16% each. 1% is given for the submission itself.
+
+1. Import the data and call it `babynames`. What is the earliest data point, what is the latest?
 2. Plot the usage of your own name or a name you like over time.
 3. Create two new columns in `babynames`: one for the century and one for the decade. The `Decade` column and the `Century` column should be contain 4-digit integers (e.g. `1990` and `1900`).
 4. Find out either graphically or via a table how many different baby names existed for each decade for each sex.
