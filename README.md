@@ -60,7 +60,6 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 
 ### Class 4: Exploratory Data Analysis (Changed to Git and Data Transformation)| Friday 25/03/22, 09:00am - 12:00pm
 *Chapters covered:*
-**Don't forget to update the syllabus before next class**
 - (not in book) Working with git (and GitHub) to find, re-use, version control, collaborate on and store code
 - 5 Data Transformation
 
@@ -71,47 +70,48 @@ Dr.  Thomas Koentges is an honorary teaching fellow at Waikato University and th
 - 5 Data Transformation
 - 7 Exploratory Data Analysis
 
-### Class 6: Data Structures | Tidy Data  / Relational Data | Friday 01/04/22, 09:00am - 12:00pm
+### Class 6: Data Transformation | Exploratory Data Analysis | Friday 01/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 5 Data Transformation
 - 7 Exploratory Data Analysis
 
 **Assessment 1 due**
 
-### Class 7: Data Types Focus: Strings, Factors, Dates | Friday 08/04/22, 09:00am - 12:00pm
+### Class 7: Exploratory Data Analysis | Data Import | Friday 08/04/22, 09:00am - 12:00pm
 *Chapters covered:*
 
 - 7 Exploratory Data Analysis
 - 11 Data import
 
-### Class 8: Programming Style & Principles | Wednesday 13/04/22, 09:00am - 12:00pm
+### Class 8: Data Import | Tidy Data | Wednesday 13/04/22, 09:00am - 12:00pm
 *Chapters covered:*
+- 11 Data import
 - 12 Tidy data
-- 13 Relational data
+
+### Break - No classes Friday 15/04/22 (Good Friday) or Friday 22/04/22
+
+### Class 9: Programming Principles | Data Types Focus: Strings, Factors, Dates | Relational Data | 27/04/22, Wednesday 09:00am - 12:00pm
+*Chapters covered:*
 - (not in book) Intro Programming 
 - 20 Vectors
 - 10 Tibbles
 - 14 Strings
 - 15 Factors
 - 18 Pipes
-
-### Break - No classes Friday 15/04/22 (Good Friday) or Friday 22/04/22
-
-### Class 9: Iteration | 27/04/22, Wednesday 09:00am - 12:00pm
-*Chapters covered:*
+- 13 Relational data
 - 16 Dates and times
-- 19 Functions
-- 21 Iteration
 
 **Assesment task 2 "Basic Analysis" will be handed out**
 
-### Class 10: Introduction to Modelling | Friday 29/04/22, 09:00am - 12:00pm
+### Class 10: Functions | Iteration | Friday 29/04/22, 09:00am - 12:00pm
+*Chapters covered:*
+- 19 Functions
+- 21 Iteration
+
+### Class 11: Modelling | Friday 06/05/22, 09:00am - 12:00pm
 *Chapters covered:*
 - 22 Introduction
 - 23 Model basics
-
-### Class 11: Model Building | Friday 06/05/22, 09:00am - 12:00pm
-*Chapters covered:*
 - 24 Model building
 
 ### Class 12: Using Many Models | Wednesday 11/05/22, 09:00am - 12:00pm
