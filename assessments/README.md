@@ -10,7 +10,7 @@ The data set includes a binary representation of a person's sex at birth.
 
 ## Tasks
 
-All task are 16% each. 1% is given for the submission itself.
+All task are 16.5% each. 1% is given for the submission itself.
 
 1. Import the data and call it `babynames`. What is the earliest data point, what is the latest?
 2. Plot the usage of your own name or a name you like over time.
