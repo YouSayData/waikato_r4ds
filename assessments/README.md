@@ -1,27 +1,18 @@
-# Visualisation Assessment
+# Basic Data Analysis Assessment (Assessment II)
 
 # Task
 
-Using the `ggplot2` and optionally `ggthemes` libaries redraw the following plots. 
+Using the `tidyverse` and optionally any other library, analyse (NZ's baby names)[https://catalogue.data.govt.nz/dataset/01ee87cd-ecf8-44a1-ad33-b376a689e597/resource/0b0b326c-d720-480f-8f86-bf2d221c7d3f/download/baby-names-2022-01-07.csv] across time. 
 
-Please submit your plots and your R script via email to me.
+The data set is provided by DIA via data.govt.nz: https://catalogue.data.govt.nz/dataset/baby-name-popularity-over-time/resource/0b0b326c-d720-480f-8f86-bf2d221c7d3f
 
-## Plot 1
+The data set includes a binary representation of a person's sex at birth.
 
-Using the `diamonds` data:
+## Tasks
 
-![diamonds plot](plots/diamonds.jpeg)
-
-## Plot 2
-
-Using the `mpg` data (hint: have a look at the `draw_quantiles` parameter of `geom_violin`):
-
-![mpg plot](plots/mpg.jpeg)
-
-## Plot 3
-
-Using the `faithfuld` data (hint: add `scale_color_viridis_c()` and also modify the `labs()`; the theme used here is `theme_clean()`, but you can use the basis ggplot theme too):
-
-![Faithful Eruptions](plots/FaithfulEruptions.jpeg)
-
-
+1. Import the data and call it `babynames`.
+2. Plot the usage of your own name or a name you like over time.
+3. Create two new columns in `babynames`: one for the century and one for the decade. The `Decade` column and the `Century` column should be contain 4-digit integers (e.g. `1990` and `1900`).
+4. Find out either graphically or via a table how many different baby names existed for each decade for each sex.
+5. Find names that can be used for both sexes in the data set. Of those take 5 random names and plot their use over time for each sex. Briefly describe what you can observe.
+6. Find the most common name in each decade for each sex.
