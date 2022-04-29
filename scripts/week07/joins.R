@@ -211,14 +211,14 @@ flights %>%
 # Set Operations ----------------------------------------------------------
 
 df1 <- tribble(
-  ~x, ~y,
-  1,  1,
-  2,  1
+  ~cow, ~weight,
+  1,  450,
+  2,  500
 )
 df2 <- tribble(
-  ~x, ~y,
-  1,  1,
-  1,  2
+  ~cow, ~weight,
+  1,  450,
+  1,  451
 )
 
 # Observations in both df1 and df2
@@ -229,3 +229,6 @@ union(df1, df2)
 
 # Observations in df1 that are not in df2
 setdiff(df1, df2)
+
+# keep everything (not a set)
+bind_rows(df1, df2)
