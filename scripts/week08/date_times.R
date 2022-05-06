@@ -60,7 +60,6 @@ c("January 10, 2012", "December 9, 2011") %>%
 c("January 10, 2012 10:40", "December 9, 2011 9:10") %>%
   mdy_hm(tz = "NZ")
 
-
 # Turn into timezones -----------------------------------------------------
 
 now() %>% with_tz("CET")
@@ -109,7 +108,7 @@ as_date(now())
 # Exercises ---------------------------------------------------------------
 
 # 1. What happens if you parse a string that contains invalid dates? E.g. c("2010-10-10", "bananas")
-# 2. Use the appropriate lubricate function to parse those:
+# 2. Use the appropriate lubridate function to parse those:
 
 d1 <- "January 1, 2010"
 d2 <- "2015-Mar-07"
