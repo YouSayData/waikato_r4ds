@@ -124,28 +124,27 @@ Dr. Thomas Koentges is an honorary teaching fellow at Waikato University and the
 
 **Assesment task 2 "Basic Analysis" will be handed out**
 
-### Class 10: Relational Data \| Functions \| Iteration \| Friday 29/04/22, 09:00am - 12:00pm
+### Class 10: Relational Data \| Friday 29/04/22, 09:00am - 12:00pm
 
 *Chapters covered:*
 
 -   13 Relational data
 -   16 Dates and times
+
+### Class 11: Date and Times \| Functions \| Friday 06/05/22, 09:00am - 12:00pm
+
+*Chapters covered:*
+
+-   16 Dates and times
 -   19 Functions
+
+### Class 12: Iteration \| Models \| Wednesday 11/05/22, 09:00am - 12:00pm
+
+*Chapters covered:*
+
 -   21 Iteration
-
-### Class 11: Modelling \| Friday 06/05/22, 09:00am - 12:00pm
-
-*Chapters covered:*
-
--   22 Introduction
--   23 Model basics
--   24 Model building
-
-### Class 12: Using Many Models \| Wednesday 11/05/22, 09:00am - 12:00pm
-
-*Chapters covered:*
-
--   25 Many models
+-   (not in book) Parallelisation
+-   23 Models (22--24)
 
 **Assessment 2 due**
 
