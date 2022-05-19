@@ -148,15 +148,17 @@ Dr. Thomas Koentges is an honorary teaching fellow at Waikato University and the
 
 **Assessment 2 due**
 
-### Class 13: Using tidymodels \| Friday 13/05/22, 09:00am - 12:00pm
+### Class 13:  Iteration \| Models \| Friday 13/05/22, 09:00am - 12:00pm
 
--   (not in book) tidymodels
+-   (not in book) Parallelisation
+-   23 Models (22--24)
 
-### Class 14: RMarkdown \| Friday 20/05/22, 09:00am - 12:00pm
+### Class 14: Recap \| Using tidymodels \| Friday 20/05/22, 09:00am - 12:00pm
 
 *Chapters covered:*
 
--   27 R Markdown
+-   (not in book) Recap
+-   (not in book) tidymodels
 
 ### Class 15: Graphics for Communication \| Wednesday 25/05/22, 09:00am - 12:00pm
 
@@ -165,12 +167,13 @@ Dr. Thomas Koentges is an honorary teaching fellow at Waikato University and the
 -   28 Graphics for communication
 -   (not in book) patchwork
 
-### Class 16: RMarkdown extended \| Friday 27/05/22, 09:00am - 12:00pm
+### Class 16: RMarkdown \| Quarto \| Friday 27/05/22, 09:00am - 12:00pm
 
 *Chapters covered:*
 
+-   27 R Markdown
 -   29 R Markdown formats
--   (not in book) further presentation formats
+-   (not in book) Quarto
 -   30 R Markdown workflow
 
 ### Class 17: Version Management with git \| Friday 03/06/22, 09:00am - 12:00pm

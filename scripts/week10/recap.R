@@ -44,3 +44,13 @@ library(tidyverse)
 # 2.1 The function should replace all - and >95% values with NA. 
 # 2.2 The body of the function may contain one or more pipelines and may create temporary or intermediate variables, 
 # but may not contain any loops.
+
+
+# Recap Exercise IV: Descriptive Modelling --------------------------------
+
+# The file `toronto-covid-2021-01-04.csv` contains reports of COVID-19 cases in Toronto.
+
+# 1. Load this file to create a tibble called `covid`.
+# 2. Construct a model showing how well the number of cases reported in one month predicts the number of cases reported in the next month.
+# Hint: (You may find the `lag()` function useful.)
+# Hint: If your goal is descriptive modelling, the solution can be a plot!
