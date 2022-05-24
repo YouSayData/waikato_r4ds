@@ -182,7 +182,43 @@ show_columns("person", person)
 # 2.2 The body of the function may contain one or more pipelines and may create temporary or intermediate variables,
 # but may not contain any loops.
 
+read_csv("https://education.rstudio.com/blog/2020/02/instructor-certification-exams/infant_hiv.csv") %>% 
+  glimpse
 
+?read_csv
+args(read_csv)
+getAnywhere(read_csv)
+
+infant_hiv <- read_csv("https://education.rstudio.com/blog/2020/02/instructor-certification-exams/infant_hiv.csv",
+                       na = c("-", ">95%"))
+
+(examsLong <- infant_hiv %>% 
+    pivot_longer(cols = -ISO3, names_to = "ColNames", values_to = "Percentage") %>% 
+    drop_na(Percentage) %>% 
+    separate(ColNames, into = c("year", "type"), convert = T) %>%
+    separate(Percentage, into = c("Percentage", "empty"), convert = T) %>%
+    select(-empty) %>%
+    mutate(Percentage = Percentage / 100) %>%
+    pivot_wider(names_from = type, values_from = Percentage) %>% 
+    rename(CountryCode = ISO3, Year = year, EstimatedPerc=est, HighestPerc=hi, LowestPerc=lo))
+
+
+infant_hiv <- read_csv("https://education.rstudio.com/blog/2020/02/instructor-certification-exams/infant_hiv.csv",
+                       na = c("-", ">95%"))
+
+remove_non_numbers <- function(string, pattern) {
+  as.double(str_remove(string, pattern))
+}
+
+infant_hiv <- infant_hiv %>% 
+  pivot_longer(!ISO3,
+               names_to = c("year", ".value"), 
+               names_sep = " ", 
+               names_transform =  list(year = as.integer)) %>%
+  mutate(across(c(est, hi, lo), remove_non_numbers, pattern = "%")) %>%
+  filter(!(is.na(est) & is.na(hi) & is.na(lo)))
+                
+  
 # Recap Exercise IV: Descriptive Modelling --------------------------------
 
 # The file `toronto-covid-2021-01-04.csv` contains reports of COVID-19 cases in Toronto.
@@ -191,3 +227,53 @@ show_columns("person", person)
 # 2. Construct a model showing how well the number of cases reported in one month predicts the number of cases reported in the next month.
 # Hint: (You may find the `lag()` function useful.)
 # Hint: If your goal is descriptive modelling, the solution can be a plot!
+
+
+# visual ------------------------------------------------------------------
+
+
+
+library(here)
+library(tidyverse)
+library(lubridate)
+
+toronto_covid <- read_csv(
+  here("scripts", 
+       "week10", 
+       "toronto-covid-2021-01-04.csv")
+  )
+
+toronto_covid %>% 
+  mutate(month = month(reported_date, label = T, abbr = F)) %>%
+  count(month) %>%
+  # just to be super careful:
+  arrange(month) %>%
+  mutate(next_month_n = lead(n),
+         last_month_n = lag(n)) %>% 
+  ggplot() +
+  geom_smooth(aes(n, next_month_n), method = "loess") +
+  coord_fixed()
+
+
+# mathematical ------------------------------------------------------------
+
+covid_by_month <- toronto_covid %>% 
+  mutate(month = month(reported_date, label = T, abbr = F)) %>%
+  count(month) %>%
+  # just to be super careful:
+  arrange(month) %>%
+  mutate(next_month_n = lead(n),
+         last_month_n = lag(n))
+
+lm_model <- covid_by_month %>% 
+  lm(next_month_n ~ n, data = .)
+
+covid_by_month %>% 
+  drop_na %>%
+  add_predictions(lm_model) %>%
+  add_residuals(lm_model)
+
+lm_model %>% coef()
+
+
+
