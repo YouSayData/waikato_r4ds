@@ -1,0 +1,114 @@
+---
+title: "What is RMarkdown"
+author: "Thomas Koentges"
+date: "`r format(Sys.time(), '%Y, %B %d')`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# local image
+
+![Kakapo](image/1600px-Kakapo_Sirocco_1.jpg)
+
+## R Markdown
+
+R Markdown is a tool for integrating prose, code, and results for authoring HTML, PDF, and MS Word documents. R Markdown files are designed to be used in three ways:
+
+1. For communicating to decision makers.
+
+2. For collaborating with other data scientists (including future you!).
+
+3. As a modern day lab notebook where you can capture not only what you did, but also what you were thinking.
+
+### How it works
+
+It contains three important types of content:
+
+- (optional) YAML header
+- chunks of R code
+- text mixed with simple text formatting
+
+![RMarkdown Workflow](https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png)
+
+### Example
+
+```{r include = FALSE}
+library(viridis)
+```
+
+The code below demonstrates two color palettes in the [viridis](https://github.com/sjmgarnier/viridis) package. Each plot displays a contour map of the Maunga Whau volcano in Auckland, New Zealand.
+
+#### Viridis colors
+
+```{r}
+image(volcano, col = viridis(200))
+```
+
+#### Magma colors
+
+```{r}
+image(volcano, col = viridis(200, option = "A"))
+```
+
+### Markdown Markup Language
+
+```
+Text formatting 
+------------------------------------------------------------
+
+*italic*  or _italic_
+**bold**   __bold__
+`code`
+superscript^2^ and subscript~2~
+
+Headings
+------------------------------------------------------------
+
+# 1st Level Header
+
+## 2nd Level Header
+
+### 3rd Level Header
+
+Lists
+------------------------------------------------------------
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+Links and images
+------------------------------------------------------------
+
+<http://example.com>
+
+[linked phrase](http://example.com)
+
+![optional caption text](path/to/img.png)
+
+Tables 
+------------------------------------------------------------
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+```
+
+## Exercises
+
+1. Practice what you’ve learned by creating a brief CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold.

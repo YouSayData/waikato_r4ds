@@ -77,6 +77,16 @@ iris_rf <-  rand_forest(trees = 100, mode = "classification") %>%
   set_engine("randomForest") %>%
   fit(Species ~ ., data = iris_training)
 
+# translate
+
+rand_forest(trees = 100, mode = "classification") %>%
+  set_engine("ranger") %>%
+  translate()
+
+rand_forest(trees = 100, mode = "classification") %>%
+  set_engine("randomForest") %>%
+  translate()
+
 
 # Predictions -------------------------------------------------------------
 
