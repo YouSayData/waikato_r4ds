@@ -97,7 +97,6 @@ p1a | (p2 / p3a)
 
 p1 + gridExtra::tableGrob(mtcars[1:10, c('mpg', 'disp')])
 
-
 # but only when it starts with a plot
 gridExtra::tableGrob(mtcars[1:10, c('mpg', 'disp')]) + p1
 
@@ -157,7 +156,7 @@ patchwork + plot_annotation(tag_levels = c('A', '1'), tag_prefix = 'Fig. ',
 
 p1
 p3a
-p1 + inset_element(cowplot::get_legend(p3a), left = 0.6, bottom = 0.6, right = 1, top = 1) 
+p1 + inset_element(cowplot::get_legend(p3a), left = 0.8, bottom = 0.5, right = 1, top = 1) 
 
 mpg
 diamonds

@@ -96,7 +96,6 @@ iris_ranger %>%
   predict(iris_testing) %>%
   bind_cols(iris_testing)
 
-
 # Validations -------------------------------------------------------------
 
 iris_ranger %>%
