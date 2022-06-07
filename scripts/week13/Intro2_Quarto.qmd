@@ -1,0 +1,124 @@
+---
+title: "CodeChunks and more---[Quarto](https://quarto.org) Version"
+author: "Thomas Koentges"
+date: "`r params$report_date`"
+format:
+  pdf:
+    documentclass: article
+    classoption: [twocolumn]
+    geometry:
+      - top=30mm
+      - left=20mm
+    number-sections: true
+    colorlinks: true
+    code-fold: true
+    fontfamily: libertinus
+params:
+  x_axis: "price"
+  y_axis: "carat"
+  report_date: "3. June 2022"
+---
+
+```{r setup, include=FALSE}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE, collapse = T)
+library(tidyverse)
+comma <- function(x) format(x, digits = 2, big.mark = ",")
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
+```
+
+## Code Chunks
+
+You can insert new code chunks in 4 ways:
+
+1.  *CTRL/CMD + Alt/Option + I*
+2.  Click +C
+3.  Type opening and closing \`\`\`
+4.  Use the Visual Editor
+
+## How a code chunk looks
+
+```` r
+```{r chunk_name, echo=F}`r ''`
+# if you read this code in the source file, this is not a code chunk!
+library(dplyr)
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarize(n = n(), mean = mean(mpg))
+```
+````
+
+```{r chunk_name, echo=F, eval=F}
+#| label: chunk_name
+#| echo: false
+#| eval: false
+
+# this would be a code chunk! But the code is neither printed (echo = F) nor executed (eval = F)
+library(dplyr)
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarize(n = n(), mean = mean(mpg))
+```
+
+### How it works
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarize(n = n(), mean = mean(mpg))
+```
+
+### Important chunk options
+
+-   `#| eval: false`
+
+-   `#| include: false`
+
+-   `#| echo: false`
+
+-   `#| message: false` or `#| warning: false`
+
+-   `#| results: hide` and `#| fig.show: hide`
+
+-   `#| error: true`
+
+```{r}
+#| cache: true
+
+print("hello world")
+```
+
+-   `#| cache: true`
+
+## Cache example
+
+```{r}
+#| label: iris-data
+#| cache: true
+
+my_data <- iris %>%
+  filter(Species != "virginica")
+```
+
+```{r}
+#| label: iris-plot
+#| cache: true
+#| dependson: iris-data
+
+my_plot <- my_data %>%
+  ggplot(aes(Sepal.Width, col = Species)) +
+  geom_boxplot()
+```
+
+```{r}
+#| label: iris-vis
+my_plot
+```
+
+## Inline R
+
+You can write R code inline to calculate variables. For instance: We have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.

@@ -1,0 +1,79 @@
+---
+title: "Visual Editor"
+author: "Thomas Koentges"
+date: "26/11/2021"
+output:
+  bookdown::pdf_document2: default
+bibliography: references.bib
+csl: chicago-manual-of-style-17th-edition.csl
+link-citation: yes
+classoption:
+- onecolumn
+toc: false
+---
+
+# Visual Editing
+
+Visual Editing gives you the comfort of a **Word Processor**. You don't have to write markdown. You can highlight `code` and still add code chunks:
+
+```{r}
+print("Hello World")
+```
+
+Learn all kinds of formats like ~~strikeout~~ and superscript^2^ and [small caps]{.smallcaps}. Citing is also super easy [@köntges2020].[^1] @köntges2020 says blah!
+
+[^1]: But it is not a magic bullet!
+
+*Inserting tables is not a pain anymore!*
+
+| Needless Info I        | Needless Info 2                 |
+|------------------------|---------------------------------|
+| `print("hello world")` | will print "hello world"        |
+| `1:2`                  | will generate an integer vector |
+
+: My awesome table
+
+## Math is easier to
+
+**CMD + /**
+
+You can write: $i 8 \sum{\pi}$ and it was salty. To which people might reply that's
+
+$$
+\sqrt{a^2 b^2 3}
+$$
+
+or ab-surd <!--# Puns made me numb, math puns make me number! -->.
+
+------------------------------------------------------------------------
+
+> Meaningful-quote options are there too!
+
+You can also insert plots and reference them (see \@ref(fig:diamond-plot))
+
+```{r diamond-plot, fig.cap="The cars data.", warning=F, message=F, echo=F}
+library(tidyverse)
+ggplot(diamonds) + geom_point(aes(price, carat))
+```
+
+### Links for Working with the Visual Editor
+
+-   [RMarkdown Basics](https://rmarkdown.rstudio.com/authoring_basics.html)
+
+-   [Overview Visual Editor](https://rstudio.github.io/visual-markdown-editing/)
+
+-   [RMarkdown Cheat Sheet 2021](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf)
+
+-   [Cross Referencing](https://bookdown.org/yihui/rmarkdown-cookbook/cross-ref.html#)
+
+-   [Math in RMarkdown](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html)
+
+### Links for Editing CSL files
+
+-   [Zotero Style Archive](https://www.zotero.org/styles)
+
+-   [CSL Visual Editor](https://editor.citationstyles.org/)
+
+\newpage
+
+# References
