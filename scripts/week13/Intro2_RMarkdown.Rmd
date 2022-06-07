@@ -1,0 +1,131 @@
+---
+title: "CodeChunks and more"
+author: "Thomas Koentges"
+date: "`r params$report_date`"
+output: html_document
+params:
+  x_axis: "price"
+  y_axis: "carat"
+  report_date: "`r format(Sys.time(), '%Y, %B %d')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = T)
+library(tidyverse)
+comma <- function(x) format(x, digits = 2, big.mark = ",")
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
+```
+
+## Code Chunks
+
+You can insert new code chunks in 4 ways:
+
+1.  *CTRL/CMD + Alt/Option + I*
+2.  Click +C
+3.  Type opening and closing \`\`\`
+4.  Use the Visual Editor
+
+## How a code chunk looks
+
+```` r
+```{r chunk_name, echo=F}`r ''`
+# if you read this code in the source file, this is not a code chunk!
+library(dplyr)
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarize(n = n(), mean = mean(mpg))
+```
+````
+
+```{r chunk_name, echo=F, eval=F}
+# this would be a code chunk! But the code is neither printed (echo = F) nor executed (eval = F)
+library(dplyr)
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarize(n = n(), mean = mean(mpg))
+```
+
+### How it works
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarize(n = n(), mean = mean(mpg))
+```
+
+### Important chunk options
+
+-   `eval = FALSE`
+
+-   `include = FALSE`
+
+-   `echo = FALSE`
+
+-   `message = FALSE` or `warning = FALSE`
+
+-   `results = 'hide'` and `fig.show = 'hide'`
+
+-   `error = TRUE`
+
+```{r cache=TRUE}
+print("hello world")
+```
+
+-   `cache = TRUE`
+
+## Cache example
+
+```{r iris_data, cache=TRUE}
+my_data <- iris %>%
+  filter(Species != "virginica")
+```
+
+```{r iris_plot, cache = T, dependson="iris_data"}
+my_plot <- my_data %>%
+  ggplot(aes(Sepal.Width, col = Species)) +
+  geom_boxplot()
+```
+
+```{r iris_vis}
+my_plot
+```
+
+## Inline R
+
+You can write R code inline to calculate variables. For instance: We have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.
+
+## Exercises
+
+1.  Make the numbers above nicer using the `comma()` function.
+
+2.  Add a section that explores how diamond sizes vary by cut, colour, and clarity. Assume you're writing a report for someone who doesn't know R, and instead of setting echo = FALSE on each chunk, set a global option.
+
+3.  Download diamond-sizes.Rmd from <https://github.com/hadley/r4ds/tree/master/rmarkdown>. Add a section that describes the largest 20 diamonds, including a table that displays their most important attributes.
+
+4.  Set up a network of chunks where d depends on c and b, and both b and c depend on a. Have each chunk print lubridate::now(), set cache = TRUE, then verify your understanding of caching.
+
+## Other interesting things
+
+::: columns
+::: {.column width="40%"}
+#### Info in 2-columns
+
+On the right side is a very informative figure!
+:::
+
+::: {.column width="60%"}
+```{r diamond-plot, fig.cap="Something useful about diamonds", fig.width=4, fig.height=3, echo=F}
+ggplot(diamonds, aes_string(params$x_axis, params$y_axis)) + geom_point()
+```
+:::
+:::
+
+## Exercise
+
+A co-worker has sent you the file `rmd-country-profile.Rmd`, which is an R Markdown document analyzing the data in `at_health_facilities.csv` for Bangladesh. They could not knit the file, and are providing you with the raw `.Rmd` file instead of a rendered file.
+
+1.  Go through the file, fixing things that are preventing it from knitting cleanly.
+2.  Change the two lines of bold text to H2-level headers to organize the document, and add a table of contents.
+3.  Convert this R Markdown report for Bangladesh into a parameterized report with the country's iso3 code as its parameter. Knit a new country profile for Egypt (ISO3 code "EGY").
