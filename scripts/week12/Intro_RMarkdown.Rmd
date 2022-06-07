@@ -1,7 +1,7 @@
 ---
 title: "What is RMarkdown"
 author: "Thomas Koentges"
-date: "`r format(Sys.time(), '%Y, %B %d')`"
+date: "`r lubridate::today()`"
 output:
   html_document:
     df_print: paged
@@ -34,7 +34,9 @@ It contains three important types of content:
 -   chunks of R code
 -   text mixed with simple text formatting
 
-![RMarkdown Workflow](https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png) ## Prerequisites
+![RMarkdown Workflow](https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png) 
+
+## Prerequisites
 
 -   HTML and Word always possible
 -   You need a LaTex installation for PDF. My strong recommendation is [tinytex](https://yihui.org/tinytex/).
@@ -49,7 +51,7 @@ The code below demonstrates two color palettes in the [viridis](https://github.c
 
 #### Viridis colors
 
-```{r}
+```{r echo = FALSE}
 image(volcano, col = viridis(200))
 ```
 

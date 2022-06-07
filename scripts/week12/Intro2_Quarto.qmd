@@ -44,7 +44,8 @@ You can insert new code chunks in 4 ways:
 
 ```` r
 ```{r chunk_name, echo=F}`r ''`
-# if you read this code in the source file, this is not a code chunk!
+# if you read this code in the source file, 
+# this is not a code chunk!
 library(dplyr)
 mtcars %>% 
   group_by(cyl) %>% 
@@ -57,7 +58,8 @@ mtcars %>%
 #| echo: false
 #| eval: false
 
-# this would be a code chunk! But the code is neither printed (echo = F) nor executed (eval = F)
+# this would be a code chunk! 
+# But the code is neither printed (echo = F) nor executed (eval = F)
 library(dplyr)
 mtcars %>% 
   group_by(cyl) %>% 

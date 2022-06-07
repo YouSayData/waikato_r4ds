@@ -79,7 +79,7 @@ print("hello world")
 
 ```{r iris_data, cache=TRUE}
 my_data <- iris %>%
-  filter(Species != "virginica")
+  filter(Species != "setosa")
 ```
 
 ```{r iris_plot, cache = T, dependson="iris_data"}
