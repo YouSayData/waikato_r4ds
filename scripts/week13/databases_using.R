@@ -27,8 +27,14 @@ copy_to(con, nycflights13::flights, "flights",
         )
 )
 
-# this is technicallly not a tibble
+copy_to(con, nycflights13::planes, "planes",
+        temporary = FALSE
+        )
+)
+
+# this is technically not a tibble
 flights_db <- tbl(con, "flights")
+planes_db <- tbl(con, "planes")
 
 # it almost looks like one though
 

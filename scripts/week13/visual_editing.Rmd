@@ -2,10 +2,9 @@
 title: "Visual Editor"
 author: "Thomas Koentges"
 date: "26/11/2021"
-output:
-  bookdown::pdf_document2: default
+output: pdf_document
 bibliography: references.bib
-csl: chicago-manual-of-style-17th-edition.csl
+csl: nature.csl
 link-citation: yes
 classoption:
 - onecolumn

@@ -10,7 +10,7 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, collapse = T)
+knitr::opts_chunk$set(echo = F, collapse = T)
 library(tidyverse)
 comma <- function(x) format(x, digits = 2, big.mark = ",")
 
@@ -94,7 +94,7 @@ my_plot
 
 ## Inline R
 
-You can write R code inline to calculate variables. For instance: We have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.
+You can write R code inline to calculate variables. For instance: We have data about `r comma(nrow(diamonds))` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.
 
 ## Exercises
 
@@ -105,6 +105,25 @@ You can write R code inline to calculate variables. For instance: We have data a
 3.  Download diamond-sizes.Rmd from <https://github.com/hadley/r4ds/tree/master/rmarkdown>. Add a section that describes the largest 20 diamonds, including a table that displays their most important attributes.
 
 4.  Set up a network of chunks where d depends on c and b, and both b and c depend on a. Have each chunk print lubridate::now(), set cache = TRUE, then verify your understanding of caching.
+
+## Cut & Clarity
+
+Those are the counts for the different cuts:
+
+```{r}
+diamonds %>%
+  ggplot(aes(cut)) +
+  geom_bar()
+```
+
+And those are the counts for the different clarities:
+
+```{r}
+diamonds %>%
+  ggplot(aes(clarity)) +
+  geom_bar()
+```
+
 
 ## Other interesting things
 

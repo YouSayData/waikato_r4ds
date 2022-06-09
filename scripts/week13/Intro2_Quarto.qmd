@@ -52,7 +52,7 @@ mtcars %>%
 ```
 ````
 
-```{r chunk_name, echo=F, eval=F}
+```{r}
 #| label: chunk_name
 #| echo: false
 #| eval: false
