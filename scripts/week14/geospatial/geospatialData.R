@@ -4,6 +4,7 @@ library(PBSmapping)
 library(mapproj)
 # library(gganimate)
 library(mapview)
+library(here)
 
 xlim <- c(-12,55)
 ylim <- c(20,60)
@@ -18,7 +19,7 @@ colnames(worldmap) <- c("X","Y","PID","POS","region","subregion")
 worldmap <- clipPolys(worldmap, xlim = xlim, ylim = ylim, keepExtra=TRUE)
 
 
-locsRaw <- read_csv("pleiades-locations.csv")
+locsRaw <- read_csv(here("scripts", "week14", "geospatial", "pleiades-locations.csv"))
 View(locsRaw)
 dataLabel <- "Data: Pleiades Project"
 
@@ -63,7 +64,7 @@ for (i in 1:nrow(features)) {
   for (ii in 1:nrow(periods)) {
     locPer <- locs[ with(locs,grepl(periods[ii,1],timePeriodsKeys)),]
 
-    fName <- paste0("plots_1/Pleiades_",features[i,2],sprintf("%02d",ii),".png")
+    fName <- here("map_plots", paste0("Pleiades_",features[i,2],sprintf("%02d",ii),".png"))
     header <- paste0(features[i,2]," in the ",periods[ii,1]," period (",periods[ii,2],")")
     p <- ggplot(locPer) +
       coord_map(xlim = xlim, ylim = ylim) +

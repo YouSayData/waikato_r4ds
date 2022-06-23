@@ -38,12 +38,12 @@ vignette("sf1")
 class(world)
 plot(world)
 summary(world["lifeExp"])
-plot(world["lifeExp"])
+plot(world["lifeExp"], key.pos = 1)
 
 world %>% 
   filter(name_long %in% c("New Zealand", "Australia")) %>% 
   select(gdpPercap, lifeExp) %>% 
-  plot
+  plot()
 
 world %>% 
   filter(name_long %in% c("New Zealand", "Australia")) %>% 
@@ -100,8 +100,8 @@ new_zealand %>% select(geom)
 # sfc
 # and data (tibble, df)
 
-oamaru_point <- st_point(c(-45.09, 170.97)) # sfg object
-hamilton_point <- st_point(c(-37.78, 175.25)) 
+oamaru_point <- st_point(c(170.97, -45.09)) # sfg object
+hamilton_point <- st_point(c(175.25, -37.78)) 
 
 oamaru_geom <- st_sfc(oamaru_point, crs = 4326) # sfc object
 hamilton_geom <- st_sfc(hamilton_point, crs = 4326)
@@ -117,7 +117,7 @@ oamaru_attr <- tibble(name = "Oamaru",
 
 hamilton_attr <- tibble(name = "Hamilton",
                       pop_peng = 0,
-                      pop = 165000,
+                      pop = 178500,
                       pen_per_cap = pop_peng / pop)
 
 oamaru_sf = st_sf(oamaru_attr, geometry = oamaru_geom)    # sf object
@@ -127,7 +127,6 @@ both_sf <- bind_rows(oamaru_sf,
                      hamilton_sf)
 
 st_crs(both_sf)
-
 
 
 # raster data -------------------------------------------------------------
