@@ -1,0 +1,149 @@
+---
+title: "Final Assesment R4DS Waikato"
+author: "Your Name (Original by Greg Wilson, adopted for teaching by Thomas Koentges)"
+date: '2022-06-08'
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+```
+
+Use your database containing the data of the file `toronto-covid-2021-01-04.csv` (which contains reports of COVID-19 cases in Toronto) to load a presentation called `covid`. Alternatively, load the this file directly and create a tibble called `covid`.
+
+```{r read_data}
+covid <- read_csv("data/toronto-covid-2021-01-04.csv")
+```
+
+Convert the values in the `gender` column to lower case; replace all "unknown" gender entries with `NA`; and then convert the entire column to a factor.
+Do not overwrite `covid`, but instead display the result inline.
+
+```{r unknown_as_na}
+covid %>%
+  mutate(gender = str_to_lower(gender),
+         gender = ifelse(gender == "unknown", NA, gender),
+         gender = as.factor(gender))
+```
+
+Use `covid` to calculate the ratio of the number of patients who are currently hospitalized to the number of patients who have ever been hospitalized.
+
+```{r hospitalized_ratio}
+covid %>% 
+  mutate(across(c(currently_hospitalized, ever_hospitalized), function(x) x == "Yes"))  %>%
+  summarise(across(c(currently_hospitalized, ever_hospitalized), sum)) %>%
+  mutate(rate = currently_hospitalized / ever_hospitalized)
+```
+
+Use `covid` to create a summary showing the number of confirmed reports per month in 2020.
+
+```{r confirmed_monthly_2020}
+covid %>% 
+  filter(classification == "CONFIRMED") %>% 
+  mutate(month = month(reported_date, label = T)) %>% 
+  count(classification, month)
+```
+
+Construct a model showing how well the number of cases reported in one week predicts the number of cases hospitalised two weeks later.
+(You may find the `lag()` function useful. Checkout the n parameter!)
+
+```{r correlation}
+covid %>% 
+  mutate(year_week= week(reported_date)) %>% 
+  count(year_week) %>%
+  mutate(two_weeks_earlier = lag(year_week, 2),
+         n_two_weeks_earlier = lag(n, 2)) %>%
+  ggplot(aes(n_two_weeks_earlier, n)) +
+  geom_smooth()
+
+```
+
+```{r correlation_2}
+# alternatively you can use joins
+
+covid %>% 
+  mutate(year_week= week(reported_date)) %>% 
+  count(year_week) %>%
+  mutate(two_weeks_later = year_week + 2) %>%
+  left_join(covid %>% 
+              mutate(year_week = week(reported_date)) %>% 
+              count(year_week),
+            by = c("two_weeks_later" = "year_week"),
+            suffix = c("_earlier", "_later")) %>%
+  ggplot(aes(n_earlier, n_later)) +
+  geom_smooth()
+
+```
+
+Create a stacked bar chart with the age groups on the X axis showing the fraction of cases of each source. Facet the plot by gender:
+
+```{r stacked_bar_faced}
+covid %>%
+  count(age_group, gender) %>%
+  ggplot(aes("cases", n, fill = age_group)) +
+  geom_col() + 
+  facet_wrap(~gender)
+```
+
+
+Count the number of days in 2020 in which the number of reported cases was higher than the number reported the day before.
+
+```{r days_of_increase}
+covid %>% 
+  count(reported_date) %>%
+  mutate(day_before = reported_date - days(1)) %>%
+  left_join(covid %>% 
+              count(reported_date),
+            by = c("day_before" = "reported_date"),
+            suffix = c("_after", "_before")) %>%
+  mutate(next_higher = n_before < n_after) %>%
+  pull(next_higher) %>%
+  sum(na.rm = T)
+```
+
+Create a new tibble called `history` showing the number of cases per month for each postal code prefix.
+You may display the month using its full name (e.g., "September") or as a number (e.g., "09").
+
+```{r create_history}
+covid %>%
+  mutate(month = month(reported_date, label = T, abbr = F)) %>%
+  count(postal_code_prefix, month)
+```
+
+Rearrange the table you just created so that it has 13 columns: one called `postal_code_prefix` and one more for each month.
+The first value in each row must be a postal code prefix;
+the other values in that row must be the number of cases in that region and that month,
+and missing values must be shown as 0 rather than NA.
+Again, you may display the month using its full name or as a number.
+
+```{r rearrange_table}
+covid %>%
+  mutate(month = month(reported_date, label = T, abbr = F)) %>%
+  count(postal_code_prefix, month) %>%
+  pivot_wider(names_from =  month,
+              values_from = n,
+              values_fill = 0)
+```
+
+The file `classification.xlsx` classifies age ranges into four groups.
+Read this file to create a tibble called `classification`.
+
+```{r read_data_xlsx}
+(classification <- readxl::read_excel("data/classification.xlsx"))
+```
+
+Use this tibble and the `covid` tibble to create a new tibble with one column containing the age classification, one called `earliest_reported` showing the first date of a report for that age group, and one called `largest_delay` showing the largest difference (in days) between the episode date and the reported date within that age group.
+
+```{r summarize_classified}
+covid %>% 
+  mutate(age = str_remove(age_group, " Years"),
+         gap = reported_date - episode_date) %>%
+  group_by(age) %>%
+  summarise(earliest_reported = min(reported_date),
+            largest_delay = max(gap)) %>%
+  left_join(classification)
+```
